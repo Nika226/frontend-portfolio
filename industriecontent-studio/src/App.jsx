@@ -3,16 +3,147 @@ import { useState } from "react";
 export default function App() {
   const [inputText, setInputText] = useState("");
   const [resultText, setResultText] = useState("");
-  const exampleText = `Wir sind ein technischer Industrie-Dienstleister mit Sitz in Nürnberg.
-Unser Unternehmen bietet professionelle Lösungen in den Bereichen Wartung,
-Instandhaltung und technische Beratung für B2B-Kunden.
+  const [toast, setToast] = useState("");
+  const [selectedTemplate, setSelectedTemplate] = useState(
+    "Unternehmensbeschreibung (B2B)",
+  );
+
+  const PLACEHOLDERS = {
+    "Unternehmensbeschreibung (B2B)":
+      "Beschreibe kurz dein Unternehmen (Branche, Leistungen, Zielkunden, Vorteile)…",
+    Leistungsbeschreibung:
+      "Welche Leistung bietest du an? Für wen? Prozess, Umfang, Vorteile (Stichpunkte)…",
+    "Landing-Text":
+      "Ziel der Landingpage + Angebot + Zielgruppe + Ton (seriös / modern)…",
+    "Google Business Beschreibung":
+      "Kurz: Wer seid ihr? Was macht ihr? Standort Nürnberg + 3–5 Vorteile…",
+    "Kundenantwort (E-Mail)":
+      "Beschreibe die Anfrage des Kunden + gewünschter Ton + wichtige Details…",
+  };
+  const EXAMPLES = {
+    "Unternehmensbeschreibung (B2B)": `Wir sind ein technischer Industrie-Dienstleister mit Sitz in Nürnberg.
+Wir unterstützen Industrieunternehmen in den Bereichen Wartung, Instandhaltung und technische Beratung.
 
 Unsere Stärken:
 - Zuverlässige Projektabwicklung
 - Erfahrene Fachkräfte
-- Individuelle Lösungen für Industrieunternehmen
+- Individuelle Lösungen
 
-Ziel: Eine kurze, professionelle Unternehmensbeschreibung für unsere Website.`;
+Ziel: Eine kurze, professionelle Unternehmensbeschreibung für unsere Website.`,
+
+    Leistungsbeschreibung: `Leistung: Industrielle Wartung & Instandhaltung (B2B)
+Zielgruppe: Produktionsbetriebe in Nürnberg und Umgebung
+Umfang:
+- Regelmäßige Wartungsintervalle
+- Störungsbehebung (kurzfristig)
+- Dokumentation & Prüfprotokolle
+
+Vorteile:
+- Weniger Stillstandzeiten
+- Planbare Kosten
+- Erhöhte Anlagenverfügbarkeit`,
+
+    "Landing-Text": `Ziel: Anfragen für Wartungs-Services generieren
+Angebot: Wartung & Instandhaltung für Industrieanlagen
+USP:
+- Schnelle Reaktionszeiten
+- Zertifizierte Fachkräfte
+- Transparente Prozesse
+
+CTA: Termin vereinbaren / Angebot anfordern`,
+
+    "Google Business Beschreibung": `Technischer Industrie-Dienstleister in Nürnberg.
+Wir bieten Wartung, Instandhaltung und technische Beratung für B2B-Kunden.
+Zuverlässig, termintreu und mit erfahrenen Fachkräften. Kontaktieren Sie uns für ein Angebot.`,
+
+    "Kundenantwort (E-Mail)": `Kunde: Anfrage zur Wartung einer Produktionsanlage (Termin + Kosten)
+Ton: freundlich & professionell
+Wichtige Infos: Standort Nürnberg, Zeitraum nächste Woche
+
+Bitte antworte dem Kunden und schlage einen kurzen Telefontermin vor.`,
+  };
+
+  const smartPlaceholder =
+    PLACEHOLDERS[selectedTemplate] ||
+    "Beschreibe kurz dein Unternehmen oder füge Stichpunkte ein…";
+  function buildResult(template, text) {
+    const clean = text.trim();
+    if (!clean) return "";
+
+    switch (template) {
+      case "Unternehmensbeschreibung (B2B)":
+        return `**Unternehmensprofil (Kurztext)**
+
+${clean}
+
+**Leistungen**
+- Wartung & Instandhaltung
+- Technische Beratung
+- Individuelle B2B-Lösungen
+
+**Kontakt**
+Nürnberg · Angebot anfordern · Telefontermin vereinbaren`;
+
+      case "Leistungsbeschreibung":
+        return `**Leistungsbeschreibung**
+
+${clean}
+
+**Nutzen für den Kunden**
+- Reduzierte Stillstandzeiten
+- Planbare Wartung
+- Dokumentierte Qualität (B2B)
+
+**Nächster Schritt**
+Kurz telefonieren → Bedarf klären → Angebot senden`;
+
+      case "Landing-Text":
+        return `**Headline**
+Zuverlässige Wartung & Instandhaltung für Industrieanlagen in Nürnberg
+
+**Kurzbeschreibung**
+${clean}
+
+**Vorteile**
+- Schnelle Reaktionszeit
+- Erfahrene Fachkräfte
+- Transparente Prozesse
+
+**Call-to-Action**
+Jetzt Angebot anfordern`;
+
+      case "Google Business Beschreibung":
+        return `Technischer Industrie-Dienstleister in Nürnberg.
+${clean}
+Wartung, Instandhaltung & technische Beratung für B2B-Kunden. Kontaktieren Sie uns für ein Angebot.`;
+
+      case "Kundenantwort (E-Mail)":
+        return `Betreff: Ihre Anfrage zur Wartung – kurzer Abstimmungstermin
+
+Guten Tag,
+
+vielen Dank für Ihre Anfrage. ${clean}
+
+Gerne klären wir die Details (Umfang, Termin, benötigte Informationen) in einem kurzen Telefonat.
+Passt Ihnen morgen oder übermorgen ein 10–15-minütiger Termin?
+
+Mit freundlichen Grüßen
+IndustrieContent Studio`;
+
+      default:
+        return clean;
+    }
+  }
+  async function handleCopy() {
+    try {
+      await navigator.clipboard.writeText(resultText);
+      setToast("Kopiert!");
+      setTimeout(() => setToast(""), 1500);
+    } catch {
+      setToast("Kopieren nicht möglich (Browser-Berechtigung).");
+      setTimeout(() => setToast(""), 2000);
+    }
+  }
 
   return (
     <div className="container">
@@ -32,7 +163,11 @@ Ziel: Eine kurze, professionelle Unternehmensbeschreibung für unsere Website.`;
 
           <label className="label">
             Vorlage
-            <select className="select">
+            <select
+              className="select"
+              value={selectedTemplate}
+              onChange={(e) => setSelectedTemplate(e.target.value)}
+            >
               <option>Unternehmensbeschreibung (B2B)</option>
               <option>Leistungsbeschreibung</option>
               <option>Landing-Text</option>
@@ -46,7 +181,7 @@ Ziel: Eine kurze, professionelle Unternehmensbeschreibung für unsere Website.`;
             <textarea
               className="textarea"
               rows={8}
-              placeholder="Beschreibe kurz dein Unternehmen oder füge Stichpunkte ein…"
+              placeholder={smartPlaceholder}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
             />
@@ -54,14 +189,15 @@ Ziel: Eine kurze, professionelle Unternehmensbeschreibung für unsere Website.`;
           <div className="buttonGroup">
             <button
               className="button buttonGhost"
-              onClick={() => setInputText(exampleText)}
+              onClick={() => setInputText(EXAMPLES[selectedTemplate] || "")}
             >
               Beispieltext einfügen
             </button>
             <button
               className="button"
               onClick={() => {
-                setResultText(inputText);
+                const output = buildResult(selectedTemplate, inputText);
+                setResultText(output);
                 setInputText("");
               }}
             >
@@ -87,10 +223,11 @@ Ziel: Eine kurze, professionelle Unternehmensbeschreibung für unsere Website.`;
           <button
             className="button buttonGhost"
             disabled={!resultText}
-            onClick={() => navigator.clipboard.writeText(resultText)}
+            onClick={handleCopy}
           >
             Kopieren
           </button>
+          {toast && <p className="hint">{toast}</p>}
         </section>
       </div>
     </div>

@@ -126,3 +126,6 @@ body {
 .button {
   height: 44px;
 }
+.resultBox {
+  white-space: pre-wrap;
+}
