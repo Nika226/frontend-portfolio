@@ -1,7 +1,9 @@
 import { useState } from "react";
 
 export default function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light",
+  );
   const [inputText, setInputText] = useState("");
   const [typedText, setTypedText] = useState("");
   const [resultText, setResultText] = useState("");
@@ -37,7 +39,7 @@ export default function App() {
       badge: "Demo · AI Simulation",
     },
   };
-  const [lang, setLang] = useState("de");
+  const [lang, setLang] = useState(() => localStorage.getItem("lang") || "de");
 
   const t = copy[lang];
 
@@ -189,6 +191,7 @@ IndustrieContent Studio`;
 
     setIsLangSwitching(true);
     setLang(nextLang);
+    localStorage.setItem("lang", nextLang);
 
     setTimeout(() => {
       setIsLangSwitching(false);
@@ -204,28 +207,33 @@ IndustrieContent Studio`;
               <h1 className="title">{t.title}</h1>
 
               <span className="badge">{t.badge}</span>
+              <div className="controlsRow">
+                <div className="langSwitch">
+                  <button
+                    type="button"
+                    className={`langBtn ${lang === "de" ? "active" : ""}`}
+                    onClick={() => switchLang("de")}
+                  >
+                    DE
+                  </button>
 
-              <div className="langSwitch">
-                <button
-                  type="button"
-                  className={`langBtn ${lang === "de" ? "active" : ""}`}
-                  onClick={() => switchLang("de")}
-                >
-                  DE
-                </button>
+                  <button
+                    type="button"
+                    className={`langBtn ${lang === "en" ? "active" : ""}`}
+                    onClick={() => switchLang("en")}
+                  >
+                    EN
+                  </button>
+                </div>
 
                 <button
+                  className="themeBtn"
+                  onClick={toggleTheme}
                   type="button"
-                  className={`langBtn ${lang === "en" ? "active" : ""}`}
-                  onClick={() => switchLang("en")}
                 >
-                  EN
+                  {theme === "light" ? "Dark" : "Light"}
                 </button>
               </div>
-
-              <button className="themeBtn" onClick={toggleTheme} type="button">
-                {theme === "light" ? "Dark" : "Light"}
-              </button>
             </div>
 
             <p className="subtitle">{t.subtitle}</p>
