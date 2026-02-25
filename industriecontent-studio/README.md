@@ -1,148 +1,45 @@
-<<<<<<< HEAD
-IndustrieContent Studio – React + Vite project
-🇩🇪 Deutsch
-IndustrieContent Studio
+# IndustrieContent Studio
 
-Ein kleines B2B-Tool zur Erstellung von Textinhalten auf Basis von Vorlagen — mit produktnaher UI und einem realistisch simulierten “AI”-Flow.
+AI-inspired content assistant for industrial B2B companies.
 
-Features
+This project simulates a structured AI text generator for technical service providers in the industrial sector.  
+It focuses on UX, clean state handling and product-oriented structure.
 
-Smart Placeholder / dynamische Eingaben
+---
 
-Vorlagen (Templates) für verschiedene Content-Typen
+## 🚀 Features
 
-Mock AI (simulierte Generierung)
+- Template-based content generation
+- Structured output formatting
+- Typing animation effect
+- Dark / Light mode
+- Language switch (DE / EN)
+- LocalStorage persistence (theme & language)
+- Responsive layout (mobile-first improvements)
 
-Typing Effect (Ausgabe wird “getippt”)
+---
 
-Copy-to-Clipboard + Toast Feedback
+## 🧠 Project Goal
 
-Dark Mode
+The goal of this project was to:
 
-Language Switch
+- Build a realistic B2B tool concept
+- Implement dynamic UI behavior
+- Practice clean component structure
+- Work with CSS variables and theme systems
+- Improve UX details (micro-interactions, animations)
 
-Responsive Layout
+---
 
-UI Polish: Badges, Micro-Animations, konsistente Details
+## 🛠 Tech Stack
 
-Geplante Verbesserungen (Next)
+- React
+- Vite
+- JavaScript (ES6+)
+- CSS Variables
+- Responsive Design
+- Git & GitHub
 
-Auto-Scroll im Ergebnisbereich
+---
 
-Visuelles Highlight der ausgewählten Vorlage
-
-Persistenz via localStorage (Theme/Sprache)
-
-Finales README + Deployment
-
-Lokal starten
-
-🇬🇧 English
-IndustrieContent Studio
-
-A small B2B tool for generating content from templates — focused on a product-like UI and a realistic mock “AI” flow.
-
-Features
-
-Smart placeholders / dynamic inputs
-
-Templates for different content types
-
-Mock AI (simulated generation)
-
-Typing effect for output
-
-Copy-to-clipboard + toast feedback
-
-Dark mode
-
-Language switch
-
-Responsive layout
-
-UI polish: badges, micro-animations, consistent details
-
-Roadmap (Next)
-
-Auto-scroll for the result area
-
-Highlight the selected template
-
-Persist settings via localStorage (theme/language)
-
-Final README + deployment
-
-Run locally
-
-=======
-IndustrieContent Studio – React + Vite project 🇩🇪 Deutsch IndustrieContent Studio
-
-Ein kleines B2B-Tool zur Erstellung von Textinhalten auf Basis von Vorlagen — mit produktnaher UI und einem realistisch simulierten “AI”-Flow.
-
-Features
-
-Smart Placeholder / dynamische Eingaben
-
-Vorlagen (Templates) für verschiedene Content-Typen
-
-Mock AI (simulierte Generierung)
-
-Typing Effect (Ausgabe wird “getippt”)
-
-Copy-to-Clipboard + Toast Feedback
-
-Dark Mode
-
-Language Switch
-
-Responsive Layout
-
-UI Polish: Badges, Micro-Animations, konsistente Details
-
-Geplante Verbesserungen (Next)
-
-Auto-Scroll im Ergebnisbereich
-
-Visuelles Highlight der ausgewählten Vorlage
-
-Persistenz via localStorage (Theme/Sprache)
-
-Finales README + Deployment
-
-Lokal starten
-
-🇬🇧 English IndustrieContent Studio
-
-A small B2B tool for generating content from templates — focused on a product-like UI and a realistic mock “AI” flow.
-
-Features
-
-Smart placeholders / dynamic inputs
-
-Templates for different content types
-
-Mock AI (simulated generation)
-
-Typing effect for output
-
-Copy-to-clipboard + toast feedback
-
-Dark mode
-
-Language switch
-
-Responsive layout
-
-UI polish: badges, micro-animations, consistent details
-
-Roadmap (Next)
-
-Auto-scroll for the result area
-
-Highlight the selected template
-
-Persist settings via localStorage (theme/language)
-
-Final README + deployment
-
-Run locally
+## 📂 Project Structure
