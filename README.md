@@ -15,7 +15,7 @@ React · Vite · JavaScript · UI/UX · Responsive Design · State Management ·
 
 Kontakt
 
-(Hier trägst du später deine Links ein — / E-Mail )
+( E-Mail: )
 
 🇬🇧 English
 
