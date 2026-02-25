@@ -43,3 +43,16 @@ The goal of this project was to:
 ---
 
 ## 📂 Project Structure
+
+---
+
+## 📌 Status
+
+Demo version – continuously improving.
+
+Next planned improvements:
+
+- Auto-scroll to result
+- Improved template highlight UI
+- Deployment (Vercel)
+- Polished UI details

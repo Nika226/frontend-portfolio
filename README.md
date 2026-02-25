@@ -53,6 +53,6 @@ To demonstrate:
 
 ## 📌 Author
 
-Veronika C.  
+Veronika T.  
 Frontend Developer  
 Germany
