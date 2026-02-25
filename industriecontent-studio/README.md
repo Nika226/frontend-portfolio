@@ -36,7 +36,7 @@ Finales README + Deployment
 
 Lokal starten
 
-(Hier kannst du später kurz reinschreiben: installieren → starten. Ohne Details reicht erstmal.)
+
 
 🇬🇧 English
 IndustrieContent Studio
@@ -75,6 +75,6 @@ Final README + deployment
 
 Run locally
 
-(You can add short steps later: install → run. Keeping it minimal is totally fine for now.)
+
 
 
