@@ -1,64 +1,58 @@
-<<<<<<< HEAD
+# Frontend Portfolio
 
-🇩🇪 Deutsch
+A curated collection of my front-end projects built with modern web technologies.  
+Focus: clean architecture, UI/UX polish, responsive design and product-oriented thinking.
 
-Frontend Portfolio
-Eine Sammlung meiner Frontend-Projekte (React/Vite) mit Fokus auf UI/UX, saubere Komponentenstruktur und produktnahe Details.
+---
 
-Projekte
+## 🚀 Projects
 
-IndustrieContent Studio (B2B Content Tool) — Template-basierter Textgenerator mit Mock-AI, Typing-Effekt, Dark Mode, Sprachumschaltung und polished UI.
-→ Ordner: ./industriecontent-studio (Demo-Link folgt nach Deployment)
+### 1️⃣ IndustrieContent Studio (B2B Tool)
 
-Tech Stack (je nach Projekt)
+AI-inspired content assistant for industrial B2B companies.
 
-React · Vite · JavaScript · UI/UX · Responsive Design · State Management · Component-based Architecture
+**Features:**
 
-Kontakt
+- Template-based content generation
+- Mock AI logic with structured output
+- Typing animation effect
+- Dark / Light mode
+- Language switch (DE / EN)
+- Responsive layout
+- LocalStorage persistence
 
-( E-Mail: )
+**Tech Stack:**
+React · Vite · JavaScript · CSS Variables · Responsive Design
 
-🇬🇧 English
+📂 Folder: `./industriecontent-studio`  
+🌐 Deployment: coming soon
 
-Frontend Portfolio
-A collection of my front-end projects (React/Vite) with a focus on UI/UX, clean component structure, and product-ready details.
+---
 
-Projects
+## 🛠 Tech Stack Overview
 
-IndustrieContent Studio (B2B Content Tool) — Template-based text generator with mock AI, typing effect, dark mode, language switch, and polished UI.
-→ Folder: ./industriecontent-studio (Demo link will be added after deployment)
+- React
+- Vite
+- JavaScript (ES6+)
+- CSS (Variables, Flexbox, Responsive)
+- Git & GitHub
 
-Tech Stack (varies per project)
+---
 
-React · Vite · JavaScript · UI/UX · Responsive Design · State Management · Component-based Architecture
+## 🎯 Goal of This Portfolio
 
-=======
-🇩🇪 Deutsch
+To demonstrate:
 
-Frontend Portfolio Eine Sammlung meiner Frontend-Projekte (React/Vite) mit Fokus auf UI/UX, saubere Komponentenstruktur und produktnahe Details.
+- Component-based architecture
+- Clean state management
+- Thoughtful UI decisions
+- Real-world product structure
+- Continuous improvement mindset
 
-Projekte
+---
 
-IndustrieContent Studio (B2B Content Tool) — Template-basierter Textgenerator mit Mock-AI, Typing-Effekt, Dark Mode, Sprachumschaltung und polished UI. → Ordner: ./industriecontent-studio (Demo-Link folgt nach Deployment)
+## 📌 Author
 
-Tech Stack (je nach Projekt)
-
-React · Vite · JavaScript · UI/UX · Responsive Design · State Management · Component-based Architecture
-
-Kontakt
-
-( E-Mail: )
-
-🇬🇧 English
-
-Frontend Portfolio A collection of my front-end projects (React/Vite) with a focus on UI/UX, clean component structure, and product-ready details.
-
-Projects
-
-IndustrieContent Studio (B2B Content Tool) — Template-based text generator with mock AI, typing effect, dark mode, language switch, and polished UI. → Folder: ./industriecontent-studio (Demo link will be added after deployment)
-
-Tech Stack (varies per project)
-
-React · Vite · JavaScript · UI/UX · Responsive Design · State Management · Component-based Architecture
-
-Contact
+Veronika C.  
+Frontend Developer  
+Germany
