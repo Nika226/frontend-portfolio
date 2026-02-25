@@ -1,45 +1,34 @@
-Dieses Projekt dient als Demo für:
 
-- strukturierte React-Anwendungen
-- übersichtliches UI-Layout für B2B-Tools
-- klare Trennung von Layout und Logik
-- Erweiterbarkeit für KI-Funktionen
-- sauberen und wartbaren Frontend-Code
+🇩🇪 Deutsch
 
----
+Frontend Portfolio
+Eine Sammlung meiner Frontend-Projekte (React/Vite) mit Fokus auf UI/UX, saubere Komponentenstruktur und produktnahe Details.
 
-## Tech Stack
+Projekte
 
-- React
-- Vite
-- JavaScript
-- CSS (modern reset)
-- Git & GitHub
+IndustrieContent Studio (B2B Content Tool) — Template-basierter Textgenerator mit Mock-AI, Typing-Effekt, Dark Mode, Sprachumschaltung und polished UI.
+→ Ordner: ./industriecontent-studio (Demo-Link folgt nach Deployment)
 
----
+Tech Stack (je nach Projekt)
 
-## Projektstatus
+React · Vite · JavaScript · UI/UX · Responsive Design · State Management · Component-based Architecture
 
-🟡 **In Entwicklung (Portfolio-Projekt)**
+Kontakt
 
-Geplant:
+(Hier trägst du später deine Links ein — / E-Mail )
 
-- UI für Texteingabe und Ergebnisanzeige
-- Formularbasierte Vorlagen
-- Integration einer KI-API (Demo)
-- Fokus auf Frontend-Architektur
+🇬🇧 English
 
----
+Frontend Portfolio
+A collection of my front-end projects (React/Vite) with a focus on UI/UX, clean component structure, and product-ready details.
 
-## Short Description (EN)
+Projects
 
-**IndustrieContent Studio** is a portfolio demo project showcasing a clean
-and structured React + Vite frontend for a B2B industrial content assistant.
-The focus is on UI structure, maintainable code and preparation for AI integration.
-=======
+IndustrieContent Studio (B2B Content Tool) — Template-based text generator with mock AI, typing effect, dark mode, language switch, and polished UI.
+→ Folder: ./industriecontent-studio (Demo link will be added after deployment)
 
-# frontend-portfolio
+Tech Stack (varies per project)
 
-Frontend portfolio (React). Projects, demos and case studies
+React · Vite · JavaScript · UI/UX · Responsive Design · State Management · Component-based Architecture
 
-> > > > > > > c3548f663bcf1e3319fdf5a8acfbdce8d955671d
+Contact
