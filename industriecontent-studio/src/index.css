@@ -36,15 +36,32 @@
   --accent-soft: rgba(255, 255, 255, 0.08);
   --btnText: #0c0f14;
 }
-.app {
-  min-height: 100vh;
-  background-color: var(--bg);
-  color: var(--text);
-}
+
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.5;
+  overscroll-behavior: none;
+  background-color: var(--bg);
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  overscroll-behavior: none;
+}
+html {
+  background-color: var(--bg);
+}
+.resultBox {
+  overscroll-behavior: contain;
+  background: var(--card);
+}
+.app {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 .container {
@@ -268,7 +285,29 @@ body {
   color: #999;
   font-size: 14px;
 }
+.select {
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
 
+.app.dark .selectFlash {
+  box-shadow: 0 0 0 4px rgba(233, 237, 243, 0.14);
+}
+.app.dark .langSwitch {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+.app.dark .langBtn {
+  color: #cfd6e4;
+}
+
+.app.dark .langBtn.active {
+  background: rgba(255, 255, 255, 0.85);
+  color: #0c0f14;
+  font-weight: 600;
+}
 .cursor {
   display: inline-block;
   margin-left: 2px;
@@ -325,21 +364,39 @@ body {
     padding: 22px 18px;
     border-radius: 16px;
   }
+  body {
+    overscroll-behavior-y: none;
+  }
   .titleRow {
     flex-direction: column;
     align-items: flex-start;
   }
-
+  .controlsRow {
+    margin-top: 8px;
+  }
+  .langBtn {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
   .themeBtn {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    margin-left: 0;
     padding: 8px 12px;
     border-radius: 999px;
     border: 1px solid var(--border);
     background: transparent;
     color: var(--text);
     cursor: pointer;
-    margin-left: 8px;
   }
 
+  .langSwitch,
+  .themeBtn {
+    height: 36px;
+  }
   .themeBtn:hover {
     background: var(--accent-soft);
   }
@@ -407,7 +464,6 @@ body {
   border: 1px solid var(--border);
   border-radius: 999px;
   overflow: hidden;
-  margin-top: 8px;
 }
 
 .langBtn {

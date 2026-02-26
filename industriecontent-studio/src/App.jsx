@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function App() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "light",
   );
+  const resultRef = useRef(null);
   const [inputText, setInputText] = useState("");
   const [typedText, setTypedText] = useState("");
   const [resultText, setResultText] = useState("");
@@ -242,7 +243,7 @@ IndustrieContent Studio`;
 
         <div className="workspace">
           {/* LEFT PANEL */}
-          <section className="panel">
+          <section className="panel" ref={resultRef}>
             <h2 className="panelTitle">Eingabe</h2>
 
             <label className="label">
@@ -291,6 +292,12 @@ IndustrieContent Studio`;
                     setTypedText(""); // сброс печати
                     setInputText("");
                     setIsLoading(false);
+                    requestAnimationFrame(() => {
+                      resultRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                    });
 
                     let i = 0;
                     const interval = setInterval(() => {
