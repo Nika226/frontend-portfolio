@@ -26,6 +26,8 @@ React · Vite · JavaScript · CSS Variables · Responsive Design
 
 📂 Folder: `./industriecontent-studio`  
 🌐 Deployment: coming soon
+🌐 **Live Demo:**  
+[Open IndustryContent Studio](https://frontend-portfolio-self.vercel.app)
 
 ---
 

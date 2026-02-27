@@ -7,6 +7,10 @@ It focuses on UX, clean state handling and product-oriented structure.
 
 ---
 
+## 🚀 Live Demo
+
+[Open IndustryContent Studio](https://frontend-portfolio-self.vercel.app)
+
 ## 🚀 Features
 
 - Template-based content generation
