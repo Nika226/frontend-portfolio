@@ -12,9 +12,7 @@ export default function App() {
   const [toast, setToast] = useState("");
   const [isLangSwitching, setIsLangSwitching] = useState(false);
 
-  const [selectedTemplate, setSelectedTemplate] = useState(
-    "Unternehmensbeschreibung (B2B)",
-  );
+  const [selectedTemplate, setSelectedTemplate] = useState("company");
   const copy = {
     de: {
       title: "IndustrieContent Studio",
@@ -45,19 +43,23 @@ export default function App() {
   const t = copy[lang];
 
   const PLACEHOLDERS = {
-    "Unternehmensbeschreibung (B2B)":
+    company:
       "Beschreibe kurz dein Unternehmen (Branche, Leistungen, Zielkunden, Vorteile)…",
-    Leistungsbeschreibung:
+
+    services:
       "Welche Leistung bietest du an? Für wen? Prozess, Umfang, Vorteile (Stichpunkte)…",
-    "Landing-Text":
+
+    landing:
       "Ziel der Landingpage + Angebot + Zielgruppe + Ton (seriös / modern)…",
-    "Google Business Beschreibung":
+
+    google:
       "Kurz: Wer seid ihr? Was macht ihr? Standort Nürnberg + 3–5 Vorteile…",
-    "Kundenantwort (E-Mail)":
+
+    email:
       "Beschreibe die Anfrage des Kunden + gewünschter Ton + wichtige Details…",
   };
   const EXAMPLES = {
-    "Unternehmensbeschreibung (B2B)": `Wir sind ein technischer Industrie-Dienstleister mit Sitz in Nürnberg.
+    company: `Wir sind ein technischer Industrie-Dienstleister mit Sitz in Nürnberg.
 Wir unterstützen Industrieunternehmen in den Bereichen Wartung, Instandhaltung und technische Beratung.
 
 Unsere Stärken:
@@ -67,7 +69,7 @@ Unsere Stärken:
 
 Ziel: Eine kurze, professionelle Unternehmensbeschreibung für unsere Website.`,
 
-    Leistungsbeschreibung: `Leistung: Industrielle Wartung & Instandhaltung (B2B)
+    services: `Leistung: Industrielle Wartung & Instandhaltung (B2B)
 Zielgruppe: Produktionsbetriebe in Nürnberg und Umgebung
 Umfang:
 - Regelmäßige Wartungsintervalle
@@ -79,7 +81,7 @@ Vorteile:
 - Planbare Kosten
 - Erhöhte Anlagenverfügbarkeit`,
 
-    "Landing-Text": `Ziel: Anfragen für Wartungs-Services generieren
+    landing: `Ziel: Anfragen für Wartungs-Services generieren
 Angebot: Wartung & Instandhaltung für Industrieanlagen
 USP:
 - Schnelle Reaktionszeiten
@@ -88,11 +90,11 @@ USP:
 
 CTA: Termin vereinbaren / Angebot anfordern`,
 
-    "Google Business Beschreibung": `Technischer Industrie-Dienstleister in Nürnberg.
+    google: `Technischer Industrie-Dienstleister in Nürnberg.
 Wir bieten Wartung, Instandhaltung und technische Beratung für B2B-Kunden.
 Zuverlässig, termintreu und mit erfahrenen Fachkräften. Kontaktieren Sie uns für ein Angebot.`,
 
-    "Kundenantwort (E-Mail)": `Kunde: Anfrage zur Wartung einer Produktionsanlage (Termin + Kosten)
+    email: `Kunde: Anfrage zur Wartung einer Produktionsanlage (Termin + Kosten)
 Ton: freundlich & professionell
 Wichtige Infos: Standort Nürnberg, Zeitraum nächste Woche
 
@@ -107,7 +109,7 @@ Bitte antworte dem Kunden und schlage einen kurzen Telefontermin vor.`,
     if (!clean) return "";
 
     switch (template) {
-      case "Unternehmensbeschreibung (B2B)":
+      case "company":
         return `**Unternehmensprofil (Kurztext)**
         
 
@@ -121,7 +123,7 @@ ${clean}
 **Kontakt**
 Nürnberg · Angebot anfordern · Telefontermin vereinbaren`;
 
-      case "Leistungsbeschreibung":
+      case "services":
         return `**Leistungsbeschreibung**
 
 ${clean}
@@ -134,7 +136,7 @@ ${clean}
 **Nächster Schritt**
 Kurz telefonieren → Bedarf klären → Angebot senden`;
 
-      case "Landing-Text":
+      case "landing":
         return `**Headline**
 Zuverlässige Wartung & Instandhaltung für Industrieanlagen in Nürnberg
 
@@ -149,12 +151,12 @@ ${clean}
 **Call-to-Action**
 Jetzt Angebot anfordern`;
 
-      case "Google Business Beschreibung":
+      case "google":
         return `
 ${clean}
 Wartung, Instandhaltung & technische Beratung für B2B-Kunden. Kontaktieren Sie uns für ein Angebot.`;
 
-      case "Kundenantwort (E-Mail)":
+      case "email":
         return `Betreff: Ihre Anfrage zur Wartung – kurzer Abstimmungstermin
 
 Guten Tag,
@@ -251,13 +253,16 @@ IndustrieContent Studio`;
               <select
                 className="select"
                 value={selectedTemplate}
-                onChange={(e) => setSelectedTemplate(e.target.value)}
+                onChange={(e) => {
+                  console.log("selectedTemplate:", e.target.value);
+                  setSelectedTemplate(e.target.value);
+                }}
               >
-                <option>Unternehmensbeschreibung (B2B)</option>
-                <option>Leistungsbeschreibung</option>
-                <option>Landing-Text</option>
-                <option>Google Business Beschreibung</option>
-                <option>Kundenantwort (E-Mail)</option>
+                <option value="company">Unternehmensbeschreibung (B2B)</option>
+                <option value="services">Leistungsbeschreibung</option>
+                <option value="landing">Landing-Text</option>
+                <option value="google">Google Business Beschreibung</option>
+                <option value="email">Kundenantwort (E-Mail)</option>
               </select>
             </label>
 
@@ -275,7 +280,15 @@ IndustrieContent Studio`;
             <div className="buttonGroup">
               <button
                 className="button buttonGhost"
-                onClick={() => setInputText(EXAMPLES[selectedTemplate] || "")}
+                onClick={() => {
+                  const example = EXAMPLES[selectedTemplate];
+                  console.log(
+                    "example debug:",
+                    selectedTemplate,
+                    EXAMPLES[selectedTemplate],
+                  );
+                  setInputText(example || "");
+                }}
               >
                 {t.exampleBtn}
               </button>
