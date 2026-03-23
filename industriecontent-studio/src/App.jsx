@@ -24,6 +24,15 @@ export default function App() {
       loading: "Generiere…",
       exampleBtn: "Beispieltext einfügen",
       badge: "Demo · Mock AI",
+      templateLabel: "Vorlage",
+      inputLabel: "Eingabetext",
+      templates: {
+        company: "Unternehmensbeschreibung (B2B)",
+        services: "Leistungsbeschreibung",
+        landing: "Landing-Text",
+        google: "Google Business Beschreibung",
+        email: "Kundenantwort (E-Mail)",
+      },
     },
 
     en: {
@@ -36,6 +45,15 @@ export default function App() {
       loading: "Generating…",
       exampleBtn: "Insert example",
       badge: "Demo · AI Simulation",
+      templateLabel: "Template",
+      inputLabel: "Input text",
+      templates: {
+        company: "Company Description (B2B)",
+        services: "Service Description",
+        landing: "Landing Text",
+        google: "Google Business Description",
+        email: "Customer Response (Email)",
+      },
     },
   };
   const [lang, setLang] = useState(() => localStorage.getItem("lang") || "de");
@@ -43,23 +61,40 @@ export default function App() {
   const t = copy[lang];
 
   const PLACEHOLDERS = {
-    company:
-      "Beschreibe kurz dein Unternehmen (Branche, Leistungen, Zielkunden, Vorteile)…",
+    de: {
+      company:
+        "Beschreibe kurz dein Unternehmen (Branche, Leistungen, Zielkunden, Vorteile)…",
 
-    services:
-      "Welche Leistung bietest du an? Für wen? Prozess, Umfang, Vorteile (Stichpunkte)…",
+      services:
+        "Welche Leistung bietest du an? Für wen? Prozess, Umfang, Vorteile (Stichpunkte)…",
 
-    landing:
-      "Ziel der Landingpage + Angebot + Zielgruppe + Ton (seriös / modern)…",
+      landing:
+        "Ziel der Landingpage + Angebot + Zielgruppe + Ton (seriös / modern)…",
 
-    google:
-      "Kurz: Wer seid ihr? Was macht ihr? Standort Nürnberg + 3–5 Vorteile…",
+      google:
+        "Kurz: Wer seid ihr? Was macht ihr? Standort Nürnberg + 3–5 Vorteile…",
 
-    email:
-      "Beschreibe die Anfrage des Kunden + gewünschter Ton + wichtige Details…",
+      email:
+        "Beschreibe die Anfrage des Kunden + gewünschter Ton + wichtige Details…",
+    },
+    en: {
+      company:
+        "Shortly describe your company (industry, services, target clients, benefits)…",
+      services:
+        "What service do you offer? For whom? Process, scope, benefits (bullet points)…",
+
+      landing:
+        "Landing page goal + offer + target audience + tone (serious / modern)…",
+
+      google: "Short: Who are you? What do you do? Location + 3–5 benefits…",
+
+      email:
+        "Describe the customer request + desired tone + important details…",
+    },
   };
   const EXAMPLES = {
-    company: `Wir sind ein technischer Industrie-Dienstleister mit Sitz in Nürnberg.
+    de: {
+      company: `Wir sind ein technischer Industrie-Dienstleister mit Sitz in Nürnberg.
 Wir unterstützen Industrieunternehmen in den Bereichen Wartung, Instandhaltung und technische Beratung.
 
 Unsere Stärken:
@@ -69,7 +104,7 @@ Unsere Stärken:
 
 Ziel: Eine kurze, professionelle Unternehmensbeschreibung für unsere Website.`,
 
-    services: `Leistung: Industrielle Wartung & Instandhaltung (B2B)
+      services: `Leistung: Industrielle Wartung & Instandhaltung (B2B)
 Zielgruppe: Produktionsbetriebe in Nürnberg und Umgebung
 Umfang:
 - Regelmäßige Wartungsintervalle
@@ -81,7 +116,7 @@ Vorteile:
 - Planbare Kosten
 - Erhöhte Anlagenverfügbarkeit`,
 
-    landing: `Ziel: Anfragen für Wartungs-Services generieren
+      landing: `Ziel: Anfragen für Wartungs-Services generieren
 Angebot: Wartung & Instandhaltung für Industrieanlagen
 USP:
 - Schnelle Reaktionszeiten
@@ -90,19 +125,63 @@ USP:
 
 CTA: Termin vereinbaren / Angebot anfordern`,
 
-    google: `Technischer Industrie-Dienstleister in Nürnberg.
+      google: `Technischer Industrie-Dienstleister in Nürnberg.
 Wir bieten Wartung, Instandhaltung und technische Beratung für B2B-Kunden.
 Zuverlässig, termintreu und mit erfahrenen Fachkräften. Kontaktieren Sie uns für ein Angebot.`,
 
-    email: `Kunde: Anfrage zur Wartung einer Produktionsanlage (Termin + Kosten)
+      email: `Kunde: Anfrage zur Wartung einer Produktionsanlage (Termin + Kosten)
 Ton: freundlich & professionell
 Wichtige Infos: Standort Nürnberg, Zeitraum nächste Woche
 
 Bitte antworte dem Kunden und schlage einen kurzen Telefontermin vor.`,
+    },
+    en: {
+      company: `We are an industrial service provider based in Nuremberg.
+We support industrial companies in maintenance, servicing and technical consulting.
+
+Our strengths:
+- Reliable project execution
+- Experienced specialists
+- Individual B2B solutions
+
+Goal: A short, professional company description for our website.`,
+
+      services: `Service: Industrial maintenance & servicing (B2B)
+Target group: Manufacturing companies in Nuremberg and surrounding areas
+Scope:
+- Regular maintenance intervals
+- Quick troubleshooting
+- Documentation & inspection reports
+
+Benefits:
+- Reduced downtime
+- Predictable costs
+- Increased equipment availability`,
+
+      landing: `Goal: Generate inquiries for maintenance services
+Offer: Maintenance & servicing for industrial equipment
+USP:
+- Fast response times
+- Certified specialists
+- Transparent processes
+
+CTA: Request a quote / Book a consultation`,
+
+      google: `Industrial service provider in Nuremberg.
+We offer maintenance, servicing and technical consulting for B2B clients.
+Reliable, on time and with experienced specialists. Contact us for a quote.`,
+
+      email: `Customer request: Maintenance of industrial equipment (timing + cost)
+Tone: friendly & professional
+Key info: Nuremberg location, next week timeframe
+
+Please respond to the customer and suggest a short call to clarify details.`,
+    },
   };
 
   const smartPlaceholder =
-    PLACEHOLDERS[selectedTemplate] ||
+    PLACEHOLDERS[lang]?.[selectedTemplate] ||
+    PLACEHOLDERS["de"][selectedTemplate] ||
     "Beschreibe kurz dein Unternehmen oder füge Stichpunkte ein…";
   function buildResult(template, text) {
     const clean = text.trim();
@@ -246,28 +325,27 @@ IndustrieContent Studio`;
         <div className="workspace">
           {/* LEFT PANEL */}
           <section className="panel" ref={resultRef}>
-            <h2 className="panelTitle">Eingabe</h2>
+            <h2 className="panelTitle">{t.inputTitle}</h2>
 
             <label className="label">
-              Vorlage
+              {t.templateLabel}
               <select
                 className="select"
                 value={selectedTemplate}
                 onChange={(e) => {
-                  console.log("selectedTemplate:", e.target.value);
                   setSelectedTemplate(e.target.value);
                 }}
               >
-                <option value="company">Unternehmensbeschreibung (B2B)</option>
-                <option value="services">Leistungsbeschreibung</option>
-                <option value="landing">Landing-Text</option>
-                <option value="google">Google Business Beschreibung</option>
-                <option value="email">Kundenantwort (E-Mail)</option>
+                <option value="company">{t.templates.company}</option>
+                <option value="services">{t.templates.services}</option>
+                <option value="landing">{t.templates.landing}</option>
+                <option value="google">{t.templates.google}</option>
+                <option value="email">{t.templates.email}</option>
               </select>
             </label>
 
             <label className="label">
-              Eingabetext
+              {t.inputLabel}
               <textarea
                 className="textarea"
                 rows={8}
@@ -281,12 +359,8 @@ IndustrieContent Studio`;
               <button
                 className="button buttonGhost"
                 onClick={() => {
-                  const example = EXAMPLES[selectedTemplate];
-                  console.log(
-                    "example debug:",
-                    selectedTemplate,
-                    EXAMPLES[selectedTemplate],
-                  );
+                  const example = EXAMPLES[lang]?.[selectedTemplate];
+
                   setInputText(example || "");
                 }}
               >
