@@ -26,6 +26,7 @@ export default function App() {
       badge: "Demo · Mock AI",
       templateLabel: "Vorlage",
       inputLabel: "Eingabetext",
+      hint: "Hier wird später der generierte Text angezeigt.",
       templates: {
         company: "Unternehmensbeschreibung (B2B)",
         services: "Leistungsbeschreibung",
@@ -47,6 +48,7 @@ export default function App() {
       badge: "Demo · AI Simulation",
       templateLabel: "Template",
       inputLabel: "Input text",
+      hint: "The generated text will appear here.",
       templates: {
         company: "Company Description (B2B)",
         services: "Service Description",
@@ -189,8 +191,21 @@ Please respond to the customer and suggest a short call to clarify details.`,
 
     switch (template) {
       case "company":
+        if (lang === "en") {
+          return `**Company Profile (Short Description)**
+
+${clean}
+
+**Services**
+- Maintenance & servicing
+- Technical consulting
+- Custom B2B solutions
+
+**Contact**
+Nuremberg · Request a quote · Schedule a call`;
+        }
+
         return `**Unternehmensprofil (Kurztext)**
-        
 
 ${clean}
 
@@ -201,9 +216,8 @@ ${clean}
 
 **Kontakt**
 Nürnberg · Angebot anfordern · Telefontermin vereinbaren`;
-
       case "services":
-        return `**Leistungsbeschreibung**
+        return `**${lang === "en" ? "Service Description" : "Leistungsbeschreibung"}**
 
 ${clean}
 
@@ -216,7 +230,23 @@ ${clean}
 Kurz telefonieren → Bedarf klären → Angebot senden`;
 
       case "landing":
-        return `**Headline**
+        if (lang === "en") {
+          return `**Headline**
+Reliable maintenance & servicing for industrial equipment in Nuremberg
+
+**Short description**
+${clean}
+
+**Benefits**
+- Fast response time
+- Experienced specialists
+- Transparent processes
+
+**Call-to-Action**
+Request a quote now`;
+        }
+
+        return `**Überschrift**
 Zuverlässige Wartung & Instandhaltung für Industrieanlagen in Nürnberg
 
 **Kurzbeschreibung**
@@ -227,15 +257,34 @@ ${clean}
 - Erfahrene Fachkräfte
 - Transparente Prozesse
 
-**Call-to-Action**
+**Handlungsaufforderung**
 Jetzt Angebot anfordern`;
 
       case "google":
+        if (lang === "en") {
+          return `
+${clean}
+Maintenance, servicing & technical consulting for B2B clients. Contact us for a quote.`;
+        }
+
         return `
 ${clean}
 Wartung, Instandhaltung & technische Beratung für B2B-Kunden. Kontaktieren Sie uns für ein Angebot.`;
-
       case "email":
+        if (lang === "en") {
+          return `Subject: Your maintenance request – quick coordination
+
+Hello,
+
+thank you for your request. ${clean}
+
+We would be happy to clarify the details (scope, timing, required information) in a short call.
+Would tomorrow or the day after work for a 10–15 minute conversation?
+
+Best regards  
+IndustryContent Studio`;
+        }
+
         return `Betreff: Ihre Anfrage zur Wartung – kurzer Abstimmungstermin
 
 Guten Tag,
@@ -245,7 +294,7 @@ vielen Dank für Ihre Anfrage. ${clean}
 Gerne klären wir die Details (Umfang, Termin, benötigte Informationen) in einem kurzen Telefonat.
 Passt Ihnen morgen oder übermorgen ein 10–15-minütiger Termin?
 
-Mit freundlichen Grüßen
+Mit freundlichen Grüßen  
 IndustrieContent Studio`;
 
       default:
@@ -404,9 +453,7 @@ IndustrieContent Studio`;
           <section className="panel">
             <h2 className="panelTitle">{t.resultTitle}</h2>
 
-            <p className="hint">
-              Hier wird später der generierte Text angezeigt.
-            </p>
+            <p className="hint">{t.hint}</p>
 
             <div className="resultBox">
               {isLoading ? (
