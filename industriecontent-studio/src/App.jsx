@@ -27,6 +27,7 @@ export default function App() {
       templateLabel: "Vorlage",
       inputLabel: "Eingabetext",
       hint: "Hier wird später der generierte Text angezeigt.",
+      download: "Herunterladen",
       templates: {
         company: "Unternehmensbeschreibung (B2B)",
         services: "Leistungsbeschreibung",
@@ -49,6 +50,7 @@ export default function App() {
       templateLabel: "Template",
       inputLabel: "Input text",
       hint: "The generated text will appear here.",
+      download: "Download",
       templates: {
         company: "Company Description (B2B)",
         services: "Service Description",
@@ -317,6 +319,19 @@ IndustrieContent Studio`;
       setTimeout(() => setToast(""), 2000);
     }
   }
+  function handleDownload() {
+    if (!resultText) return;
+
+    const blob = new Blob([resultText], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "generated-text.txt";
+    a.click();
+
+    URL.revokeObjectURL(url);
+  }
   function switchLang(nextLang) {
     if (nextLang === lang) return;
 
@@ -484,6 +499,13 @@ IndustrieContent Studio`;
               onClick={handleCopy}
             >
               {t.copy}
+            </button>
+            <button
+              className="button buttonGhost"
+              onClick={handleDownload}
+              disabled={!resultText}
+            >
+              {t.download}
             </button>
             {toast && <p className="hint">{toast}</p>}
           </section>
