@@ -1,24 +1,24 @@
 const mockProducts = [
   {
     id: 1,
-    title: "Garden Shovel",
-    price: 25,
-    discont_price: null,
-    image: "/product_img/1.jpeg",
+    title: "Product 1",
+    price: 100,
+    image: "/product_img/1.jpg",
+    category: "plants",
   },
   {
     id: 2,
-    title: "Flower Pot",
-    price: 15,
-    discont_price: 10,
-    image: "/product_img/2.jpeg",
+    title: "Product 2",
+    price: 200,
+    image: "/product_img/2.jpg",
+    category: "plants",
   },
   {
     id: 3,
-    title: "Watering Can",
-    price: 30,
-    discont_price: null,
-    image: "/product_img/3.jpeg",
+    title: "Product 3",
+    price: 300,
+    image: "/product_img/3.jpg",
+    category: "plants",
   },
 ];
 
