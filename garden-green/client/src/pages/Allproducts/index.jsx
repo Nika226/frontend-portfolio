@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MainPageBtn from "../../components/MainButton/index.jsx";
 import { useEffect, useState } from "react";
 import { products as mockProducts } from "../../data/mockData";
+import { fetchProducts } from "../../storage/slices/productSlice";
 import styles from "./index.module.css";
 import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
@@ -37,6 +38,7 @@ function AllProducts() {
 
   useEffect(() => {
     setDocumentTitle("product");
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   useEffect(() => {
@@ -60,7 +62,7 @@ function AllProducts() {
 
     if (showDiscounted) {
       updatedProducts = updatedProducts.filter(
-        (product) => product.discont_price != null,
+        (product) => product.discont_price !== null,
       );
     }
 
