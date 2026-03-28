@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MainPageBtn from "../../components/MainButton/index.jsx";
 import { useEffect, useState } from "react";
 import { products as mockProducts } from "../../data/mockData";
-import { fetchProducts } from "../../storage/slices/productSlice";
+
 import styles from "./index.module.css";
 import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
@@ -38,7 +38,6 @@ function AllProducts() {
 
   useEffect(() => {
     setDocumentTitle("product");
-    dispatch(fetchProducts());
   }, [dispatch]);
 
   useEffect(() => {
@@ -136,50 +135,49 @@ function AllProducts() {
       </div>
       <div className={styles.productsDiv}>
         {status === "loading" && <p className={styles.loading}>Loading...</p>}
-        {status === "succeeded" &&
-          displayedProducts.map((product) => (
-            <div className={styles.productCard} key={product.id}>
-              <img
-                className={styles.productImg}
-                src={product.image}
-                alt={product.title}
-                onClick={() => handleProductClick(product.id)}
-              />
-              {product.discont_price && (
-                <div className={styles.discountText}>
-                  <p>
-                    -
-                    {calculateDiscountPercent(
-                      product.discont_price,
-                      product.price,
-                    )}
-                    %
-                  </p>
-                </div>
-              )}
-              <button
-                className={`${styles.addToCartBtn} ${
-                  isProductInCart(product.id) ? styles.addedToCart : ""
-                }`}
-                onClick={() => handleAddToCart(product.id)}
-              >
-                {isProductInCart(product.id) ? "Added" : "Add to Cart"}
-              </button>
-              <div className={styles.productTitlePrice}>
-                <h3 className={styles.productName}>{product.title}</h3>
-                <div className={styles.priceDscPriceDiv}>
-                  <p className={styles.price}>
-                    {product.discont_price
-                      ? "$" + product.discont_price
-                      : "$" + product.price}
-                  </p>
-                  {product.discont_price && (
-                    <p className={styles.discountPrice}>${product.price}</p>
+        {displayedProducts.map((product) => (
+          <div className={styles.productCard} key={product.id}>
+            <img
+              className={styles.productImg}
+              src={product.image}
+              alt={product.title}
+              onClick={() => handleProductClick(product.id)}
+            />
+            {product.discont_price && (
+              <div className={styles.discountText}>
+                <p>
+                  -
+                  {calculateDiscountPercent(
+                    product.discont_price,
+                    product.price,
                   )}
-                </div>
+                  %
+                </p>
+              </div>
+            )}
+            <button
+              className={`${styles.addToCartBtn} ${
+                isProductInCart(product.id) ? styles.addedToCart : ""
+              }`}
+              onClick={() => handleAddToCart(product.id)}
+            >
+              {isProductInCart(product.id) ? "Added" : "Add to Cart"}
+            </button>
+            <div className={styles.productTitlePrice}>
+              <h3 className={styles.productName}>{product.title}</h3>
+              <div className={styles.priceDscPriceDiv}>
+                <p className={styles.price}>
+                  {product.discont_price
+                    ? "$" + product.discont_price
+                    : "$" + product.price}
+                </p>
+                {product.discont_price && (
+                  <p className={styles.discountPrice}>${product.price}</p>
+                )}
               </div>
             </div>
-          ))}
+          </div>
+        ))}
       </div>
     </div>
   );
