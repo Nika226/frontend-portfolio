@@ -15,7 +15,6 @@ import { setDocumentTitle } from "../../utils/setDocumentTitle";
 function AllProducts() {
   const dispatch = useDispatch();
   const products = mockProducts;
-  const status = useSelector((state) => state.products.status);
 
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [priceFrom, setPriceFrom] = useState("");
@@ -134,7 +133,6 @@ function AllProducts() {
         </div>
       </div>
       <div className={styles.productsDiv}>
-        {status === "loading" && <p className={styles.loading}>Loading...</p>}
         {displayedProducts.map((product) => (
           <div className={styles.productCard} key={product.id}>
             <img
