@@ -21,5 +21,4 @@ const mockProducts = [
     category: "plants",
   },
 ];
-
 export default mockProducts;

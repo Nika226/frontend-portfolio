@@ -133,7 +133,7 @@ function AllProducts() {
         </div>
       </div>
       <div className={styles.productsDiv}>
-        {products.map((product) => (
+        {displayedProducts.map((product) => (
           <div className={styles.productCard} key={product.id}>
             <img
               className={styles.productImg}
