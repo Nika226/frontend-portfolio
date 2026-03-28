@@ -1,16 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import mockProducts from "../../data/mockProducts";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (_, { rejectWithValue }) => {
     try {
       const response = await fetch("http://localhost:3333/products/all");
+
+      if (!response.ok) {
+        throw new Error("Server not available");
+      }
+
       const data = await response.json();
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      // 💥 fallback на mock данные
+      return mockProducts;
     }
-  }
+  },
 );
 
 const productSlice = createSlice({
@@ -26,7 +33,7 @@ const productSlice = createSlice({
     addToCart: (state, action) => {
       const { product, quantity } = action.payload;
       const existingIndex = state.cartItems.findIndex(
-        (item) => item.id === product.id
+        (item) => item.id === product.id,
       );
       if (existingIndex >= 0) {
         state.cartItems[existingIndex].quantity += quantity;
@@ -35,18 +42,18 @@ const productSlice = createSlice({
       }
       state.cartItemCount = state.cartItems.reduce(
         (total, item) => total + item.quantity,
-        0
+        0,
       );
     },
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter(
-        (item) => item.id !== action.payload
+        (item) => item.id !== action.payload,
       );
       state.cartItemCount = state.cartItems.length;
     },
     increaseCartItemQuantity: (state, action) => {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload
+        (item) => item.id === action.payload,
       );
       if (itemIndex >= 0 && state.cartItems[itemIndex].quantity < 99) {
         state.cartItems[itemIndex].quantity += 1;
@@ -54,7 +61,7 @@ const productSlice = createSlice({
     },
     decreaseCartItemQuantity: (state, action) => {
       const itemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload
+        (item) => item.id === action.payload,
       );
       if (itemIndex >= 0 && state.cartItems[itemIndex].quantity > 1) {
         state.cartItems[itemIndex].quantity -= 1;
