@@ -1,9 +1,9 @@
 export const products = [
   {
     id: 1,
-    title: "Garden Tool",
+    title: "Product 1",
     price: 100,
-    discont_price: 80,
-    image: "/images/tool.jpg",
+    image: "/images/products/1.jpg",
+    category: "plants",
   },
 ];

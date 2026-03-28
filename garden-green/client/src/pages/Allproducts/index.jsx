@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import MainPageBtn from "../../components/MainButton/index.jsx";
 import { useEffect, useState } from "react";
 import { products as mockProducts } from "../../data/mockData";
-
 import styles from "./index.module.css";
 import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
@@ -52,7 +51,7 @@ function AllProducts() {
 
     updatedProducts = updatedProducts.filter((product) => {
       const effectivePrice =
-        product.discont_price !== null ? product.discont_price : product.price;
+        product.discont_price != null ? product.discont_price : product.price;
       return (
         (fromPrice === null || effectivePrice >= fromPrice) &&
         (toPrice === null || effectivePrice <= toPrice)
@@ -61,7 +60,7 @@ function AllProducts() {
 
     if (showDiscounted) {
       updatedProducts = updatedProducts.filter(
-        (product) => product.discont_price !== null,
+        (product) => product.discont_price != null,
       );
     }
 
