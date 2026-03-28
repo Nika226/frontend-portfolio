@@ -61,7 +61,7 @@ function AllProducts() {
 
     if (showDiscounted) {
       updatedProducts = updatedProducts.filter(
-        (product) => product.discont_price !== null
+        (product) => product.discont_price !== null,
       );
     }
 
@@ -140,7 +140,7 @@ function AllProducts() {
             <div className={styles.productCard} key={product.id}>
               <img
                 className={styles.productImg}
-                src={`http://localhost:3333${product.image}`}
+                src={product.image}
                 alt={product.title}
                 onClick={() => handleProductClick(product.id)}
               />
@@ -150,7 +150,7 @@ function AllProducts() {
                     -
                     {calculateDiscountPercent(
                       product.discont_price,
-                      product.price
+                      product.price,
                     )}
                     %
                   </p>
