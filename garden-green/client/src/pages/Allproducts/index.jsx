@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import MainPageBtn from "../../components/MainButton/index.jsx";
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../../storage/slices/productSlice";
+import { products as mockProducts } from "../../data/mockData";
+
 import styles from "./index.module.css";
 import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
@@ -13,7 +14,7 @@ import { setDocumentTitle } from "../../utils/setDocumentTitle";
 
 function AllProducts() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
+  const products = mockProducts;
   const status = useSelector((state) => state.products.status);
 
   const [displayedProducts, setDisplayedProducts] = useState([]);
@@ -37,7 +38,6 @@ function AllProducts() {
 
   useEffect(() => {
     setDocumentTitle("product");
-    dispatch(fetchProducts());
   }, [dispatch]);
 
   useEffect(() => {
