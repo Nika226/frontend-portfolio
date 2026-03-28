@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import MainPageBtn from "../../components/MainButton/index.jsx";
 import { useEffect, useState } from "react";
-import { products as mockProducts } from "../../data/mockData";
+import mockProducts from "../../data/mockData";
 
 import styles from "./index.module.css";
 import downIcon from "../../assets/images/downIcon.svg";
