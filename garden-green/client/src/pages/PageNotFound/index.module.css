@@ -1,0 +1,86 @@
+/*.pageContainer {
+  display: flex;
+}*/
+.containerNf {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.containerNf h3 {
+  margin-top: 32px;
+  color: #282828;
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.containerNf p {
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  width: 664px;
+  text-align: center;
+  margin: auto;
+  margin-top: 16px;
+}
+
+.containerNf button {
+  margin-top: 32px;
+  border: none;
+  padding: 16px 56px;
+  border-radius: 6px;
+  background: green;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.containerNf button:hover {
+  background: #282828;
+  transition: 0.5s;
+}
+@media (max-width: 768px) {
+  .containerNf img {
+    width: 648px;
+  }
+  .containerNf h3 {
+    font-size: 56px;
+  }
+}
+@media (max-width: 480px) {
+  .containerNf {
+    padding: 0 20px;
+  }
+  .containerNf img {
+    width: 440px;
+  }
+  .containerNf h3 {
+    font-size: 48px;
+  }
+  .containerNf p {
+    font-size: 18px;
+    width: 440px;
+  }
+  .containerNf button {
+    width: 191px;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 360px) {
+  .containerNf img {
+    width: 320px;
+  }
+  .containerNf h3 {
+    font-size: 40px;
+  }
+  .containerNf p {
+    width: 320px;
+  }
+}

@@ -1,0 +1,51 @@
+.slayder {
+  display: flex;
+  font-family: "Roboto";
+  color: #ffffff;
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../assets/images/imgSlayder.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 10% 3%;
+}
+
+.sleft {
+  flex: 1;
+  font-size: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 120px;
+  line-height: 1.1;
+}
+
+.sleft h1 {
+  color: rgb(255, 255, 255);
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 105.6px;
+  max-width: 900px;
+}
+
+.slayderbtn {
+  /*max-width: 218px;
+  width: 100%;*/
+  width: 218px;
+  height: 58px;
+  display: flex;
+  color: rgb(255, 255, 255);
+  background: green;
+  margin: 40px;
+  padding: 2%;
+  font-size: 15px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  gap: 10px;
+  font-weight: 500;
+}

@@ -1,0 +1,143 @@
+.title {
+  color: #282828;
+  font-size: 64px;
+  font-weight: 700;
+  padding-left: 40px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  margin: 25px;
+}
+
+.divInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 40px;
+}
+
+.infoText {
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  border-radius: 12px;
+  background: #f1f3f4;
+  margin-bottom: 32px;
+}
+
+.paragraphText {
+  color: #8b8b8b;
+  font-size: 20px;
+  font-weight: 500;
+}
+.socImg {
+  color: mediumvioletred;
+}
+
+.socImg_wats {
+  color: green;
+}
+
+.Info {
+  color: #282828;
+  font-size: 40px;
+  width: 650px;
+  font-weight: 600;
+}
+.paragraphInfoInfo {
+  color: #282828;
+  font-size: 40px;
+  width: 650px;
+  font-weight: 600;
+  padding-bottom: 45px;
+}
+
+.footerImg {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 16px;
+  gap: 16px;
+  transform: scale(2);
+}
+.infotextTwo {
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  border-radius: 12px;
+  background: #f1f3f4;
+  margin-bottom: 32px;
+}
+@media (max-width: 1000px) {
+  .title {
+    padding-left: 20px;
+    padding-top: 60px;
+  }
+  .divInfo {
+    padding-left: 20px;
+    gap: 20px;
+  }
+  .infoText {
+    width: 470px;
+  }
+  .Info {
+    width: 450px;
+  }
+}
+@media (max-width: 768px) {
+  footer {
+    width: 728px;
+  }
+  .title {
+    font-size: 56px;
+  }
+  .infotextTwo {
+    width: 220px;
+  }
+  .infotextTwo p {
+    width: 168px;
+  }
+}
+@media (max-width: 480px) {
+  footer {
+    width: 480px;
+  }
+  .title {
+    font-size: 48px;
+  }
+  .divInfo {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .infoText {
+    width: 440px;
+    padding: 24px 20px;
+  }
+  .paragraphText {
+    font-size: 18px;
+  }
+  .Info {
+    font-size: 28px;
+  }
+  .paragraphInfoInfo {
+    font-size: 28px;
+    width: 400px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 360px) {
+  .title {
+    font-size: 40px;
+  }
+  .infoText {
+    width: 320px;
+  }
+  .Info {
+    width: 280px;
+  }
+  footer {
+    width: 360px;
+  }
+}

@@ -1,0 +1,130 @@
+.emptyDiv {
+  padding: 40px;
+}
+.titleBtn {
+  display: flex;
+  align-items: center;
+}
+.titleBtnBar {
+  width: 682px;
+  height: 1px;
+  background: #ddd;
+  margin-left: 32px;
+  width: 100%;
+}
+
+.emptyTitle {
+  color: #282828;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.storeBtn {
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.emptyText {
+  margin-top: 40px;
+  overflow: hidden;
+  color: #282828;
+  text-overflow: ellipsis;
+  font-size: 20px;
+  font-weight: 500;
+}
+.emptyBtn {
+  margin-top: 32px;
+  padding: 16px 56px;
+  border-radius: 6px;
+  background: #393;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.emptyBtn:hover {
+  background: #282828;
+  transition: 0.5s;
+}
+@media (max-width: 1000px) {
+  .emptyText {
+    width: 470px;
+  }
+}
+@media (max-width: 768px) {
+  .emptyDiv {
+    padding: 32px 20px;
+    width: 768px;
+  }
+  .emptyTitle {
+    font-size: 56px;
+  }
+  .titleBtn {
+    width: 720px;
+  }
+  .storeBtn {
+    width: 130px;
+    font-size: 12px;
+  }
+  .emptyText {
+    font-size: 20px;
+    width: 700px;
+  }
+}
+@media (max-width: 480px) {
+  .emptyDiv {
+    position: relative;
+    width: 480px;
+  }
+  .emptyTitle {
+    font-size: 48px;
+  }
+  .titleBtnBar {
+    display: none;
+  }
+  .emptyText {
+    font-size: 18px;
+    width: 350px;
+  }
+  .storeBtn {
+    position: absolute;
+    top: 280px;
+  }
+  .titleBtn {
+    width: 400px;
+  }
+  .emptyBtn {
+    width: 180px;
+    font-size: 16px;
+    white-space: nowrap;
+    text-align: center;
+    padding: 12px;
+  }
+}
+@media (max-width: 360px) {
+  .emptyDiv {
+    width: 360px;
+  }
+  .emptyTitle {
+    font-size: 40px;
+  }
+  .emptyText {
+    font-size: 18px;
+    width: 300px;
+  }
+  .titleBtn {
+    width: 300px;
+  }
+}
