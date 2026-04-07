@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styles from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import mockProducts from "../../data/mockData";
 import { addToCart, fetchProducts } from "../../storage/slices/productSlice";
 import MainPage from "../../components/MainButton/index.jsx";
 import minus from "../../assets/images/minus.svg";
@@ -14,12 +15,8 @@ function ProductCard() {
   const { id: stringId } = useParams();
   const id = parseInt(stringId, 10);
   const dispatch = useDispatch();
-  const products = useSelector((state) =>
-    state.products.products.find((p) => p.id === id)
-  );
-
-  const status = useSelector((state) => state.products.status);
-  const cartItems = useSelector((state) => state.products.cartItems);
+  const status = useSelector((state) => state.product.status);
+  const cartItems = useSelector((state) => state.product.cartItems);
   const [quantity, setQuantity] = useState(1);
 
   const isProductInCart = (productId) => {
@@ -44,7 +41,7 @@ function ProductCard() {
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart({ product: products, quantity }));
+    dispatch(addToCart({ product: product, quantity }));
   };
 
   const increaseQuantity = () => {
@@ -59,7 +56,7 @@ function ProductCard() {
     }
   };
 
-  const fullText = products?.description;
+  const fullText = product?.description;
   const [isReadMore, setIsReadMore] = useState(true);
 
   const toggleReadMore = () => {
@@ -75,10 +72,11 @@ function ProductCard() {
   };
 
   const categories = useSelector((state) => state.categories.categories);
-  const product = useSelector((state) =>
-    state.products.products.find((p) => p.id === id)
-  );
+  const product = mockProducts.find((p) => p.id === id);
 
+  if (!product) {
+    return <h2>Product not found</h2>;
+  }
   const categoryTitle =
     categories.find((cat) => cat.id === product?.categoryId)?.title ||
     "No Category";
@@ -86,7 +84,7 @@ function ProductCard() {
     <div className={styles.productCardDiv}>
       {status === "loading" && <p className={styles.loading}>Loading...</p>}
       {status === "succeeded" && (
-        <div key={products.id}>
+        <div key={product.id}>
           <div className={styles.allBtn}>
             <MainPage />
             <button
@@ -103,32 +101,32 @@ function ProductCard() {
             >
               {categoryTitle}
             </button>
-            <button className={styles.btnTitle}>{products.title}</button>
+            <button className={styles.btnTitle}>{product.title}</button>
           </div>
           <div className={styles.productsInfo}>
             <img
               className={styles.productCardImg}
-              src={`http://localhost:3333${products.image}`}
-              alt={products.title}
+              src={`http://localhost:3333${product.image}`}
+              alt={product.title}
             />
             <div className={styles.productCartInfoText}>
-              <h3 className={styles.productTitle}>{products.title}</h3>
+              <h3 className={styles.productTitle}>{product.title}</h3>
               <div className={styles.priceInfo}>
-                {products.discont_price ? (
-                  <p className={styles.priceText}>${products.discont_price}</p>
+                {product.discont_price ? (
+                  <p className={styles.priceText}>${product.discont_price}</p>
                 ) : (
-                  <p className={styles.productPrice}>${products.price}</p>
+                  <p className={styles.productPrice}>${product.price}</p>
                 )}
-                {products.discont_price && (
-                  <p className={styles.discountText}>${products.price}</p>
+                {product.discont_price && (
+                  <p className={styles.discountText}>${product.price}</p>
                 )}
                 <div className={styles.positionDiv}>
-                  {products.discont_price && (
+                  {product.discont_price && (
                     <div className={styles.percentDiv}>
                       <p className={styles.percentText}>
                         {calculateDiscountPercent(
-                          products.price,
-                          products.discont_price
+                          product.price,
+                          product.discont_price,
                         )}
                         %
                       </p>
