@@ -60,7 +60,7 @@ function FilledShoppingCart() {
             <div key={item.id} className={styles.cartInfoDiv}>
               <img
                 className={styles.cartImg}
-                src={`http://localhost:3333${item.image}`}
+                src={item.image}
                 alt={item.title}
                 onClick={() => handleProductClick(item.id)}
               />
