@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductsByCategory } from "../../storage/slices/categoryProductsSlice";
 import styles from "./index.module.css";
 import { useEffect, useState } from "react";
 import MainPageBtn from "../../components/MainButton/index.jsx";
@@ -10,15 +9,13 @@ import { addToCart } from "../../storage/slices/productSlice";
 import { calculateDiscountPercent } from "../../utils/utils";
 import { sortProducts } from "../../utils/sortProducts";
 import { setDocumentTitle } from "../../utils/setDocumentTitle";
-import { fetchCategories } from "../../storage/slices/categoriesSlice";
+import mockProducts from "../../data/mockData";
+import mockCategories from "../../data/mockCategories";
 
 function CategoryProducts() {
   const { categoryId } = useParams();
   const dispatch = useDispatch();
-  const products = useSelector(
-    (state) => state.categoryProducts.productsByCategory[categoryId]
-  );
-  const status = useSelector((state) => state.categoryProducts.status);
+
   const navigate = useNavigate();
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [minPrice, setMinPrice] = useState("");
@@ -27,16 +24,17 @@ function CategoryProducts() {
   const [sorting, setSorting] = useState("byDefault");
 
   const categoryIdNumber = parseInt(categoryId, 10);
-  const categories = useSelector((state) => state.categories.categories);
+  const products = mockProducts.filter(
+    (product) => product.categoryId === categoryIdNumber,
+  );
+  const categories = mockCategories;
   const category = categories.find((cat) => cat.id === categoryIdNumber);
   const cartItems = useSelector((state) => state.products.cartItems);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     setDocumentTitle("categoriesProduct");
-    dispatch(fetchCategories());
-    dispatch(fetchProductsByCategory(categoryId));
-  }, [categoryId, dispatch]);
+  }, []);
 
   const handleAddToCart = (product) => {
     dispatch(addToCart({ product, quantity: 1 }));
@@ -59,8 +57,8 @@ function CategoryProducts() {
   };
 
   useEffect(() => {
-    if (products?.data) {
-      let filteredProducts = products.data.filter((product) => {
+    if (products) {
+      let filteredProducts = products.filter((product) => {
         const price = product.discont_price || product.price;
         return (
           (!showDiscounted || product.discont_price) &&
@@ -144,52 +142,49 @@ function CategoryProducts() {
         </div>
       </div>
       <div className={styles.productsDiv}>
-        {status === "loading" && <p className={styles.loading}>Loading...</p>}
-        {status === "succeeded" &&
-          products &&
-          filteredProducts.map((product) => (
-            <div className={styles.productCard} key={product.id}>
-              <img
-                className={styles.productImg}
-                src={`http://localhost:3333${product.image}`}
-                alt={product.title}
-                onClick={() => handleProductClick(product.id)}
-              />
-              {product.discont_price && (
-                <div className={styles.discountText}>
-                  <p>
-                    -
-                    {calculateDiscountPercent(
-                      product.discont_price,
-                      product.price
-                    )}
-                    %
-                  </p>
-                </div>
-              )}
-              <button
-                className={`${styles.addToCartBtn} ${
-                  isProductInCart(product.id) ? styles.addedToCart : ""
-                }`}
-                onClick={() => handleAddToCart(product)}
-              >
-                {isProductInCart(product.id) ? "Added" : "Add to Cart"}
-              </button>
-              <div className={styles.productTitlePrice}>
-                <h3 className={styles.productName}>{product.title}</h3>
-                <div className={styles.priceDscPriceDiv}>
-                  <p className={styles.price}>
-                    {product.discont_price
-                      ? "$" + product.discont_price
-                      : "$" + product.price}
-                  </p>
-                  {product.discont_price && (
-                    <p className={styles.discountPrice}>${product.price}</p>
+        {filteredProducts.map((product) => (
+          <div className={styles.productCard} key={product.id}>
+            <img
+              className={styles.productImg}
+              src={product.image}
+              alt={product.title}
+              onClick={() => handleProductClick(product.id)}
+            />
+            {product.discont_price && (
+              <div className={styles.discountText}>
+                <p>
+                  -
+                  {calculateDiscountPercent(
+                    product.discont_price,
+                    product.price,
                   )}
-                </div>
+                  %
+                </p>
+              </div>
+            )}
+            <button
+              className={`${styles.addToCartBtn} ${
+                isProductInCart(product.id) ? styles.addedToCart : ""
+              }`}
+              onClick={() => handleAddToCart(product)}
+            >
+              {isProductInCart(product.id) ? "Added" : "Add to Cart"}
+            </button>
+            <div className={styles.productTitlePrice}>
+              <h3 className={styles.productName}>{product.title}</h3>
+              <div className={styles.priceDscPriceDiv}>
+                <p className={styles.price}>
+                  {product.discont_price
+                    ? "$" + product.discont_price
+                    : "$" + product.price}
+                </p>
+                {product.discont_price && (
+                  <p className={styles.discountPrice}>${product.price}</p>
+                )}
               </div>
             </div>
-          ))}
+          </div>
+        ))}
       </div>
     </div>
   );

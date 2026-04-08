@@ -1,24 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import mockProducts from "../../data/mockProducts";
+import mockProducts from "../../data/mockData";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await fetch("http://localhost:3333/products/all");
-
-      if (!response.ok) {
-        throw new Error("Server not available");
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      // 💥 fallback на mock данные
-      return mockProducts;
-    }
+  async () => {
+    return mockProducts;
   },
 );
+// fallback to mock data if backend is unavailable
 
 const productSlice = createSlice({
   name: "products",

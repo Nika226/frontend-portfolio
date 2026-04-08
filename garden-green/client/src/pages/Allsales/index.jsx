@@ -39,7 +39,7 @@ function AllSales() {
   useEffect(() => {
     let discountedProducts = products.filter(
       (product) =>
-        product.discont_price !== null && product.discont_price < product.price
+        product.discont_price !== null && product.discont_price < product.price,
     );
 
     let updatedProducts = sortProducts(discountedProducts, sortValue);
@@ -116,7 +116,7 @@ function AllSales() {
             <div key={product.id} className={styles.product}>
               <img
                 className={styles.saleImg}
-                src={`http://localhost:3333${product.image}`}
+                src={product.image}
                 alt={product.title}
                 onClick={() => handleProductClick(product.id)}
               />
@@ -132,7 +132,7 @@ function AllSales() {
                 <p>
                   {calculateDiscountPercent(
                     product.price,
-                    product.discont_price
+                    product.discont_price,
                   )}
                   %
                 </p>

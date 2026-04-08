@@ -46,7 +46,7 @@ function Mainpage() {
           <div key={category.id} className={styles.categoryCard}>
             <img
               className={styles.categoriesImg}
-              src={`http://localhost:3333${category.image}`}
+              src={category.image}
               alt={category.title}
               onClick={() => {
                 handleCategoryClick(category.id);

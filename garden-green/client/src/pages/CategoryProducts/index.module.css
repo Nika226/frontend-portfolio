@@ -138,7 +138,9 @@ label {
 }
 
 .productCard:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.33);
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.4),
+    0 6px 20px 0 rgba(0, 0, 0, 0.33);
   transition: 0.5s;
 }
 
@@ -229,18 +231,27 @@ label {
     width: 110px;
   }
   .productCard {
-    width: 220px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 316px;
+    height: 420px;
   }
   .productImg {
-    width: 220px;
+    width: 100%;
+    max-width: 316px;
+    height: 284px;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid #ddd;
   }
   .productsDiv {
     gap: 10px;
   }
   .productTitlePrice {
-    width: 220px;
-    padding: 20px;
+    width: 100%;
+    padding: 12px;
     margin-top: 0;
+    box-sizing: border-box;
   }
   .addToCartBtn {
     width: 190px;
@@ -259,14 +270,22 @@ label {
   }
   .productsDiv {
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    width: 768px;
+    gap: 16px;
+    width: 100%;
   }
   .productCard {
-    width: 300px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 316px;
+    height: 420px;
   }
   .productImg {
-    width: 300px;
+    width: 100%;
+    max-width: 316px;
+    height: 284px;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid #ddd;
   }
 }
 @media (max-width: 480px) {
@@ -277,16 +296,28 @@ label {
     grid-template-columns: 1fr;
   }
   .productsDiv {
-    width: 430px;
+    grid-template-columns: 1fr;
+    width: 100%;
+    justify-items: center;
   }
   .productCard {
-    width: 210px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 316px;
+    height: 420px;
   }
   .productImg {
-    width: 210px;
+    width: 100%;
+    max-width: 316px;
+    height: 284px;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid #ddd;
   }
   .addToCartBtn {
-    width: 180px;
+    width: calc(100% - 32px);
+    left: 16px;
+    margin-left: 0;
   }
   .categoriesBtn {
     display: none;
@@ -301,15 +332,27 @@ label {
   }
   .productsDiv {
     grid-template-columns: 1fr;
-    width: 330px;
+    width: 100%;
+    justify-items: center;
   }
   .productCard {
-    width: 300px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 316px;
+    height: 420px;
   }
+
   .productImg {
-    width: 300px;
+    width: 100%;
+    max-width: 316px;
+    height: 284px;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid #ddd;
   }
   .addToCartBtn {
-    width: 270px;
+    width: calc(100% - 32px);
+    left: 16px;
+    margin-left: 0;
   }
 }
