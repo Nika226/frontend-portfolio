@@ -7,9 +7,13 @@
   border-radius: 12px;
   transition: 0.5s;
   cursor: pointer;
+  object-fit: cover;
+  display: block;
 }
 .categoriesImg:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.33);
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.4),
+    0 6px 20px 0 rgba(0, 0, 0, 0.33);
 }
 .categoriesDivImg {
   padding-left: 20px;
@@ -67,6 +71,9 @@
   }
   .categoriesImg {
     width: 280px;
+    height: 320px;
+    object-fit: cover;
+    display: block;
   }
 }
 @media (max-width: 768px) {
@@ -82,6 +89,9 @@
   }
   .categoriesImg {
     width: 334px;
+    height: 320px;
+    object-fit: cover;
+    display: block;
   }
 }
 @media (max-width: 480px) {
@@ -100,6 +110,8 @@
   .categoriesImg {
     width: 200px;
     height: 250px;
+    object-fit: cover;
+    display: block;
   }
 }
 @media (max-width: 360px) {
@@ -114,5 +126,8 @@
   }
   .categoriesImg {
     width: 280px;
+    height: 250px;
+    object-fit: cover;
+    display: block;
   }
 }

@@ -1,5 +1,10 @@
 .allProductsDiv {
-  padding: 40px 40px;
+  padding: 40px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .allProductsBtn {
@@ -9,6 +14,7 @@
   color: #282828;
   cursor: pointer;
   margin-left: 16px;
+  background: #fff;
 }
 
 .allProductsTitle {
@@ -16,12 +22,18 @@
   font-size: 64px;
   font-weight: 700;
   margin-top: 40px;
+  margin-bottom: 0;
+  line-height: 1.1;
 }
 
 .allInputs {
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 32px;
   margin-top: 40px;
-  gap: 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .discountedInput {
@@ -37,6 +49,8 @@
 
 .priceInputText {
   display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .priceText,
@@ -48,11 +62,13 @@ label {
 }
 
 .priceInputText input {
-  margin-left: 16px;
+  width: 112px;
   padding: 8px 16px;
   border-radius: 6px;
   border: 1px solid #ddd;
   outline: none;
+  box-sizing: border-box;
+  margin-left: 0;
 }
 
 .checkbox {
@@ -61,6 +77,7 @@ label {
   border-radius: 6px;
   border: 1px solid #ddd;
   appearance: none;
+  flex-shrink: 0;
 }
 
 .checkbox:checked {
@@ -87,38 +104,57 @@ label {
   color: #282828;
   font-weight: 500;
   margin-left: 16px;
-  outline: none;
+  box-sizing: border-box;
 }
 
 .productsDiv {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 32px;
   margin-top: 60px;
-  align-items: center;
-  text-align: center;
+  justify-items: center;
+}
+
+.productCard {
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 316px;
+  height: 420px;
+  cursor: pointer;
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.productCard:hover {
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.4),
+    0 6px 20px 0 rgba(0, 0, 0, 0.33);
+  transition: 0.5s;
 }
 
 .productImg {
-  width: 316px;
+  width: 100%;
+  max-width: 316px;
   height: 284px;
   border-radius: 12px 12px 0 0;
   border: 1px solid #ddd;
-}
-
-.priceDscPriceDiv {
-  display: flex;
-  justify-content: flex-start;
-  gap: 16px;
-  margin-top: 16px;
+  display: block;
+  object-fit: cover;
+  box-sizing: border-box;
 }
 
 .productTitlePrice {
-  width: 316px;
+  width: 100%;
+  max-width: 316px;
   border: 1px solid transparent;
   border-top: none;
-  margin-top: 20px;
-  padding: 5px 32px 32px 32px;
+  margin-top: 0;
+  padding: 16px 20px 20px 20px;
+  box-sizing: border-box;
 }
 
 .productName {
@@ -129,47 +165,40 @@ label {
   white-space: nowrap;
 }
 
-.productCard {
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  width: 316px;
-  height: 420px;
-  cursor: pointer;
-  transition: 0.5s;
-  position: relative;
-}
-
-.productCard:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.33);
-  transition: 0.5s;
+.priceDscPriceDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .price {
   color: #282828;
   font-size: 40px;
   font-weight: 600;
-  margin: -10px;
+  margin: 0;
 }
 
 .discountPrice {
   color: #8b8b8b;
   font-size: 20px;
   font-weight: 500;
-  margin-top: 16px;
   text-decoration: line-through;
-  margin: 0px 0px 0px 15px;
+  margin: 0;
 }
 
 .addToCartBtn {
   display: none;
   position: absolute;
-  margin-left: 16px;
+  left: 16px;
+  right: 16px;
   border-radius: 6px;
   background: #393;
   border: none;
   bottom: 140px;
-  width: 284px;
-  padding: 16px 32px;
+  width: auto;
+  padding: 16px 24px;
   justify-content: center;
   align-items: center;
   color: #fff;
@@ -177,6 +206,7 @@ label {
   font-weight: 600;
   transition: 0.5s;
   cursor: pointer;
+  margin-left: 0;
 }
 
 .productCard:hover .addToCartBtn {
@@ -188,6 +218,7 @@ label {
   background: #282828;
   transition: 0.5s;
 }
+
 .addedToCart {
   border-radius: 6px;
   border: 1px solid #282828;
@@ -205,122 +236,258 @@ label {
   padding: 4px 8px;
   border-radius: 6px;
   background: #393;
+  z-index: 2;
 }
 
 .discountText p {
   color: #fff;
   font-size: 20px;
   font-weight: 600;
+  margin: 0;
 }
+
 .loading {
   color: #282828;
   font-size: 20px;
   font-weight: 600;
 }
+
 @media (max-width: 1000px) {
   .allProductsDiv {
     padding: 40px 20px;
   }
+
+  .allInputs {
+    gap: 20px;
+  }
+
   .productsDiv {
-    gap: 8px;
+    gap: 16px;
   }
-  .productImg {
-    width: 225px;
-    height: 250px;
-  }
-  .productTitlePrice {
-    width: 225px;
-    height: 120px;
-    padding: 5px 32px 0px 32px;
-  }
+
   .productCard {
-    width: 225px;
+    max-width: 225px;
     height: 390px;
   }
-  .priceDscPriceDiv {
-    margin-top: 15px;
+
+  .productImg {
+    max-width: 225px;
+    height: 250px;
   }
+
+  .productTitlePrice {
+    max-width: 225px;
+    padding: 12px 16px 16px 16px;
+  }
+
   .addToCartBtn {
-    width: 194px;
-    bottom: 160px;
-  }
-  .allInputs {
-    gap: 10px;
+    bottom: 140px;
+    left: 12px;
+    right: 12px;
+    padding: 14px 16px;
+    font-size: 18px;
   }
 }
+
 @media (max-width: 768px) {
+  .allProductsDiv {
+    padding: 32px 20px;
+  }
+
   .allProductsTitle {
     font-size: 56px;
+    margin-top: 32px;
   }
+
   .allInputs {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    gap: 24px;
+    align-items: start;
   }
-  .productsDiv {
-    grid-template-columns: 1fr 1fr;
+
+  .priceInputText {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    align-items: center;
   }
+
   .priceInputText input {
-    width: 112px;
+    width: 100%;
   }
-  .allProductsDiv {
-    padding: 32px 20px;
-    width: 728px;
+
+  .productsDiv {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
+
   .productCard {
-    width: 345px;
+    max-width: 320px;
+    height: 420px;
   }
+
   .productImg {
-    width: 345px;
+    max-width: 320px;
+    height: 284px;
   }
+
+  .productTitlePrice {
+    max-width: 320px;
+    padding: 12px 16px 20px 16px;
+  }
+
   .addToCartBtn {
-    width: 285px;
-    margin-left: 30px;
+    left: 16px;
+    right: 16px;
+    bottom: 140px;
   }
 }
+
 @media (max-width: 480px) {
-  .allProductsTitle {
-    font-size: 48px;
+  .allProductsDiv {
+    padding: 24px 16px;
   }
+
   .allProductsBtn {
     display: none;
   }
+
+  .allProductsTitle {
+    font-size: 48px;
+    margin-top: 24px;
+  }
+
   .allInputs {
+    display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
+    width: 100%;
   }
-  .productCard {
-    width: 210px;
+
+  .priceInputText {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
   }
-  .productImg {
-    width: 210px;
+
+  .priceInputText input {
+    width: 100%;
   }
-  .addToCartBtn {
-    width: 185px;
-    margin-left: 10px;
+
+  .discountedInput {
+    width: 100%;
+    justify-content: space-between;
   }
-  .allProductsDiv {
-    width: 440px;
+
+  .span {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    width: 100%;
   }
-}
-@media (max-width: 360px) {
-  .allProductsTitle {
-    font-size: 40px;
+
+  .priceSort {
+    width: 100%;
+    margin-left: 0;
   }
+
   .productsDiv {
     grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: center;
   }
+
   .productCard {
-    width: 320px;
+    max-width: 316px;
+    height: 420px;
   }
+
   .productImg {
-    width: 320px;
+    max-width: 316px;
+    height: 284px;
   }
+
+  .productTitlePrice {
+    max-width: 316px;
+    padding: 12px 16px 20px 16px;
+  }
+
   .addToCartBtn {
-    width: 285px;
-    margin-left: 13px;
+    left: 16px;
+    right: 16px;
+    bottom: 140px;
   }
+}
+
+@media (max-width: 360px) {
   .allProductsDiv {
-    width: 360px;
+    padding: 20px 12px;
+  }
+
+  .allProductsTitle {
+    font-size: 32px;
+    line-height: 1.1;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .priceText,
+  .discountPar,
+  label {
+    font-size: 16px;
+  }
+
+  .allInputs {
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .priceInputText {
+    gap: 10px;
+  }
+
+  .discountedInput {
+    gap: 10px;
+  }
+
+  .productsDiv {
+    gap: 16px;
+  }
+
+  .productCard {
+    max-width: 300px;
+    height: 420px;
+  }
+
+  .productImg {
+    max-width: 300px;
+    height: 260px;
+  }
+
+  .productTitlePrice {
+    max-width: 300px;
+    padding: 12px 12px 20px 12px;
+  }
+
+  .productName {
+    font-size: 18px;
+  }
+
+  .price {
+    font-size: 34px;
+  }
+
+  .discountPrice {
+    font-size: 18px;
+  }
+
+  .addToCartBtn {
+    left: 12px;
+    right: 12px;
+    bottom: 140px;
+    padding: 14px 12px;
+    font-size: 18px;
   }
 }
