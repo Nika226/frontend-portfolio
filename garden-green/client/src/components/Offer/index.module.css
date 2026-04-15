@@ -251,20 +251,24 @@
 
   .form input {
     position: relative;
-    width: 400px;
+    width: 100%;
     margin-bottom: 8px;
     height: 47px;
     font-size: 18px;
   }
 
   .form {
-    position: absolute;
-    top: 120px;
-    right: -20px;
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
   }
 
   .discountBtn {
-    width: 400px;
+    width: 100%;
   }
 
   .submittedDiscountBtn {
