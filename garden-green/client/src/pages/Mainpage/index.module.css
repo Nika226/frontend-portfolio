@@ -1,10 +1,12 @@
 .mainTitle {
   color: #fff;
   font-size: 96px;
-  padding: 80px 40px 0 40px;
-  width: 1360px;
+  padding: 80px 40px 0;
+  width: 100%;
+  max-width: 100%;
   font-weight: 700;
 }
+
 .mainBtn {
   margin: 40px 0 210px 40px;
   padding: 16px 56px;
@@ -13,28 +15,32 @@
   border-radius: 6px;
   color: #fff;
   font-size: 20px;
-  font-weight: 600;
   cursor: pointer;
 }
+
+/* ===== CATEGORIES ===== */
+
 .categoriesDiv {
   display: flex;
-
-  padding: 60px 40px 40px 40px;
+  align-items: center;
+  padding: 60px 40px 40px;
 }
+
 .categoriesTitle {
   color: #282828;
   font-size: 64px;
   font-weight: 700;
-  margin: 10px;
 }
+
 .categoriesBar {
   background: #ddd;
   width: 100%;
   height: 1px;
   margin-left: 32px;
-  margin-top: 40px;
 }
+
 .categoriesBtn {
+  margin-left: 20px;
   height: 36px;
   padding: 8px 16px;
   border-radius: 6px;
@@ -42,144 +48,105 @@
   color: #8b8b8b;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 20px;
   white-space: nowrap;
 }
-.categoriesImg {
-  width: 290px;
-  height: 310px;
-  background-repeat: no-repeat;
-  border-radius: 10px 10px 0 0;
-}
+
+/* ===== CARDS ===== */
+
 .swipperDiv {
-  display: flex;
-  text-align: center;
-  cursor: pointer;
-  justify-content: space-between;
-  margin: 3px 3px 0 3px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   padding: 20px;
 }
-.swipperTitle {
-  color: #282828;
-  padding: 15px;
-  font-size: 20px;
-  text-align: center;
-  font-weight: 600;
-}
+
 .categoryCard {
-  display: block;
-  text-align: center;
-  align-items: center;
-  width: 316px;
+  width: 100%;
+  max-width: 316px;
   border-radius: 12px;
   border: 1px solid #ddd;
-  transition: 0.5s;
-}
-.categoryCard:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.33);
-  transition: 0.5s;
+  text-align: center;
 }
 
+.categoriesImg {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.swipperTitle {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ===== 1000 ===== */
 @media (max-width: 1000px) {
   .mainTitle {
-    font-size: 90px;
-    padding: 60px 20px 0 20px;
+    font-size: 72px;
+    padding: 60px 20px 0;
   }
+
   .mainBtn {
-    margin: 40px 0 326px 20px;
+    margin-left: 20px;
   }
+
   .categoriesDiv {
     padding: 40px 20px;
   }
-  .categoriesImg {
-    width: 225px;
-    height: 250px;
-  }
 
   .swipperDiv {
-    padding-top: 20px;
-    margin: 0 20px 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 15px;
-  }
-  .categoryCard {
-    width: 225px;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* ===== 768 ===== */
 @media (max-width: 768px) {
   .mainTitle {
-    font-size: 68px;
-    width: 750px;
-  }
-  .categoriesTitle {
     font-size: 56px;
   }
-  .categoriesDiv {
-    padding: 20px 20px;
-  }
-}
 
-@media (max-width: 480px) {
-  .mainTitle {
-    font-size: 60px;
-    padding: 50px 20px 0 20px;
-    width: 420px;
-  }
-  .mainBtn {
-    margin-top: 24px;
-    margin-bottom: 215px;
-    padding: 12px 52px;
-    font-size: 18px;
-  }
   .categoriesTitle {
     font-size: 48px;
   }
-  .categoriesBtn {
-    font-size: 14px;
-  }
+
   .swipperDiv {
-    grid-template-columns: 1fr 1fr;
-  }
-  .categoriesImg {
-    width: 210px;
-    height: 254px;
-  }
-  .categoryCard {
-    width: 210px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 360px) {
+
+/* ===== 480 ===== */
+@media (max-width: 480px) {
   .mainTitle {
-    font-size: 52px;
-    width: 320px;
-  }
-  .categoriesBar {
-    display: none;
-  }
-  .categoriesDiv {
-    position: relative;
-  }
-  .categoriesBtn {
-    position: absolute;
-    top: 1550px;
-    left: 55px;
-  }
-  .categoriesTitle {
     font-size: 40px;
+    padding: 40px 20px 0;
   }
+
+  .mainBtn {
+    margin: 20px;
+    padding: 12px 40px;
+    font-size: 16px;
+  }
+
+  .categoriesDiv {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .categoriesTitle {
+    font-size: 36px;
+  }
+
   .swipperDiv {
     grid-template-columns: 1fr;
   }
-  .categoriesImg {
-    width: 320px;
-    height: 220px;
-  }
-  .categoryCard {
-    width: 320px;
-  }
-  .swipperDiv {
-    padding-bottom: 122px;
+}
+
+/* ===== 360 ===== */
+@media (max-width: 360px) {
+  .mainTitle {
+    font-size: 32px;
   }
 }

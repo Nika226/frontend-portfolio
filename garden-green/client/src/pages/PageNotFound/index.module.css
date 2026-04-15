@@ -1,12 +1,16 @@
-/*.pageContainer {
-  display: flex;
-}*/
 .containerNf {
-  display: block;
-  justify-content: center;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   margin-top: 80px;
+  padding: 0 20px;
+}
+
+.containerNf img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
 }
 
 .containerNf h3 {
@@ -18,12 +22,9 @@
 
 .containerNf p {
   color: #8b8b8b;
-  text-align: center;
   font-size: 20px;
   font-weight: 500;
-  width: 664px;
-  text-align: center;
-  margin: auto;
+  max-width: 600px;
   margin-top: 16px;
 }
 
@@ -34,53 +35,38 @@
   border-radius: 6px;
   background: green;
   color: #fff;
-  text-align: center;
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.5s;
 }
 
-.containerNf button:hover {
-  background: #282828;
-  transition: 0.5s;
-}
+/* ===== 768 ===== */
 @media (max-width: 768px) {
-  .containerNf img {
-    width: 648px;
-  }
-  .containerNf h3 {
-    font-size: 56px;
-  }
-}
-@media (max-width: 480px) {
-  .containerNf {
-    padding: 0 20px;
-  }
-  .containerNf img {
-    width: 440px;
-  }
   .containerNf h3 {
     font-size: 48px;
   }
-  .containerNf p {
-    font-size: 18px;
-    width: 440px;
+}
+
+/* ===== 480 ===== */
+@media (max-width: 480px) {
+  .containerNf h3 {
+    font-size: 36px;
   }
+
+  .containerNf p {
+    font-size: 16px;
+  }
+
   .containerNf button {
-    width: 191px;
-    font-size: 18px;
-    white-space: nowrap;
+    width: 100%;
+    max-width: 220px;
+    font-size: 16px;
   }
 }
+
+/* ===== 360 ===== */
 @media (max-width: 360px) {
-  .containerNf img {
-    width: 320px;
-  }
   .containerNf h3 {
-    font-size: 40px;
-  }
-  .containerNf p {
-    width: 320px;
+    font-size: 28px;
   }
 }

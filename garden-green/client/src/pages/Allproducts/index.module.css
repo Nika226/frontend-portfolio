@@ -491,3 +491,26 @@ label {
     font-size: 18px;
   }
 }
+/* 🔥 FINAL FIX — убираем остаточный overflow */
+
+.productImg,
+.productTitlePrice {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* чтобы ничего не вылазило из карточки */
+.productCard {
+  overflow: hidden;
+}
+
+/* форма не ломает экран */
+.allInputs > * {
+  max-width: 100%;
+}
+
+/* select не выталкивает */
+.priceSort {
+  max-width: 100%;
+}

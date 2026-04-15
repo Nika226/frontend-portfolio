@@ -1,19 +1,47 @@
 .navbar {
-  margin: 50px 0;
+  margin: 20px 0;
   display: flex;
-  justify-content: space-around;
-  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
   box-shadow: 0 1px 3px -2px black;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hLogo {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 
 .hLogo p {
   color: #171717;
-  font-size: 38px;
+  font-size: 28px;
   font-weight: 600;
+}
+
+/* ===== 768 ===== */
+@media (max-width: 768px) {
+  .hLogo p {
+    font-size: 24px;
+  }
+}
+
+/* ===== 480 ===== */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px;
+  }
+
+  .hLogo p {
+    font-size: 20px;
+  }
+}
+
+/* ===== 360 ===== */
+@media (max-width: 360px) {
+  .hLogo p {
+    font-size: 18px;
+  }
 }

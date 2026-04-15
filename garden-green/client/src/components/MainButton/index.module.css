@@ -4,6 +4,7 @@
   border: 1px solid #ddd;
   color: #8b8b8b;
   cursor: pointer;
+  white-space: nowrap;
 }
 @media (max-width: 480px) {
   .mainPageBtn {
