@@ -1,11 +1,11 @@
 .topBtn {
   position: fixed;
-  right: 16px;
-  bottom: 20px;
+  right: 12px;
+  bottom: 16px;
   width: 48px;
   height: 48px;
-  font-size: 28px;
-  color: white;
+  font-size: 26px;
+  color: #fff;
   background-color: green;
   border: none;
   border-radius: 12px;
@@ -18,8 +18,8 @@
 
 @media (max-width: 480px) {
   .topBtn {
-    right: 12px;
-    bottom: 16px;
+    right: 8px;
+    bottom: 14px;
     width: 44px;
     height: 44px;
     font-size: 24px;

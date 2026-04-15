@@ -5,7 +5,9 @@
 
 .form input {
   margin-bottom: 32px;
-  width: 484px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 16px 32px;
   align-items: center;
   border-radius: 6px;
@@ -39,7 +41,8 @@
 
 .orderBtn {
   padding: 16px 32px;
-  width: 484px;
+  width: 100%;
+  max-width: 100%;
   align-items: center;
   border-radius: 6px;
   background: #393;
