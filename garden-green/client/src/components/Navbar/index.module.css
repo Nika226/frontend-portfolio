@@ -1,10 +1,14 @@
 .navbar {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
   padding: 16px 24px;
   box-shadow: 0 1px 3px -2px black;
+  overflow-x: clip;
 }
 
 .navlogo {
@@ -12,10 +16,13 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+  min-width: 0;
 }
 
 .navlogo img {
   display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .navmenu {
@@ -60,6 +67,7 @@
   align-items: center;
   gap: 24px;
   flex-shrink: 0;
+  min-width: 0;
 }
 
 .navlogincart button {
@@ -81,6 +89,8 @@
 
 .navlogincart img {
   display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .navcartcount {
@@ -95,6 +105,7 @@
   font-size: 14px;
   background: green;
   color: white;
+  flex-shrink: 0;
 }
 
 @media (max-width: 1000px) {
@@ -180,7 +191,6 @@
 
   .navlogo img {
     width: 56px;
-    height: auto;
   }
 
   .navmenu {
@@ -201,7 +211,6 @@
 
   .navlogincart img {
     width: 34px;
-    height: auto;
   }
 
   .navcartcount {
@@ -221,7 +230,6 @@
 
   .navlogo img {
     width: 50px;
-    height: auto;
   }
 
   .navmenu {
@@ -241,7 +249,6 @@
 
   .navlogincart img {
     width: 30px;
-    height: auto;
   }
 
   .navcartcount {

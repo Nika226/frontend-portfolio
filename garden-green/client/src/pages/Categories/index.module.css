@@ -1,11 +1,17 @@
 .categoriesDiv {
   padding: 40px 20px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .categoriesTitle {
-  padding-top: 40px;
+  padding-top: 24px;
   color: #282828;
   font-size: 64px;
+  line-height: 1.1;
+  font-weight: 700;
 }
 
 .categoriesBtn {
@@ -14,19 +20,17 @@
   border: 1px solid #ddd;
   cursor: pointer;
   margin-left: 16px;
+  background: #fff;
+  color: #282828;
 }
-
-/* ===== GRID ===== */
 
 .categoriesDivImg {
-  padding: 40px 20px;
+  padding: 40px 0 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
   justify-items: center;
 }
-
-/* ===== CARD ===== */
 
 .imgPDiv {
   width: 100%;
@@ -40,49 +44,55 @@
   border-radius: 12px;
   object-fit: cover;
   display: block;
-  transition: 0.3s;
+  transition: box-shadow 0.3s ease;
 }
 
 .categoriesImg:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
 }
 
 .categoriInfo {
   padding-top: 16px;
   font-size: 20px;
   font-weight: 600;
+  color: #282828;
 }
 
-/* ===== 1000 ===== */
 @media (max-width: 1000px) {
   .categoriesDivImg {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
   }
 }
 
-/* ===== 768 ===== */
 @media (max-width: 768px) {
   .categoriesTitle {
     font-size: 56px;
   }
 
   .categoriesDivImg {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* ===== 480 ===== */
 @media (max-width: 480px) {
+  .categoriesDiv {
+    padding: 24px 16px;
+  }
+
   .categoriesBtn {
     display: none;
   }
 
   .categoriesTitle {
     font-size: 40px;
+    padding-top: 16px;
   }
 
   .categoriesDivImg {
     grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 24px;
   }
 
   .categoriesImg {
@@ -90,13 +100,12 @@
   }
 }
 
-/* ===== 360 ===== */
 @media (max-width: 360px) {
   .categoriesTitle {
     font-size: 32px;
   }
 
   .imgPDiv {
-    max-width: 280px;
+    max-width: 300px;
   }
 }

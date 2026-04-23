@@ -137,10 +137,12 @@ function AllSales() {
                   %
                 </p>
               </div>
-              <h3 className={styles.productName}>{product.title}</h3>
-              <div className={styles.price}>
-                <p className={styles.dscPrice}>${product.discont_price}</p>
-                <p className={styles.originalPrice}>${product.price}</p>
+              <div className={styles.productInfo}>
+                <h3 className={styles.productName}>{product.title}</h3>
+                <div className={styles.price}>
+                  <p className={styles.dscPrice}>${product.discont_price}</p>
+                  <p className={styles.originalPrice}>${product.price}</p>
+                </div>
               </div>
             </div>
           ))}

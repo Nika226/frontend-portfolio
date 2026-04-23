@@ -1,49 +1,37 @@
 .form {
   margin-top: 32px;
-  position: relative;
 }
 
 .form input {
-  margin-bottom: 32px;
+  display: block;
+  margin-bottom: 8px;
   width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 16px 32px;
-  align-items: center;
+  padding: 16px 20px;
   border-radius: 6px;
   border: 1px solid #ddd;
   background: #fff;
   outline: none;
   color: #8b8b8b;
   font-size: 20px;
+  box-sizing: border-box;
 }
 
 .error {
   color: red;
   font-size: 14px;
   font-weight: 600;
+  margin: -2px 0 16px;
 }
 
-.errorName {
-  position: absolute;
-  top: 65px;
-}
-
-.errorPhone {
-  position: absolute;
-  top: 153px;
-}
-
+.errorName,
+.errorPhone,
 .errorEmail {
-  position: absolute;
-  top: 240px;
+  position: static;
 }
 
 .orderBtn {
   padding: 16px 32px;
   width: 100%;
-  max-width: 100%;
-  align-items: center;
   border-radius: 6px;
   background: #393;
   border: none;
@@ -52,44 +40,41 @@
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.5s;
+  transition: background 0.3s ease;
 }
 
 .orderBtn:hover {
   background: #282828;
-  transition: 0.5s;
 }
 
 .modalDiv {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 8;
-  width: 100vw;
-  height: 100vh;
   background: rgba(40, 40, 40, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .modalWindow {
-  width: 548px;
+  width: min(548px, 100%);
   padding: 32px;
-  align-items: flex-start;
   border-radius: 12px;
   background: #393;
+  box-sizing: border-box;
 }
 
 .textBtn {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .modalBtn {
-  background: #393;
+  background: transparent;
   border: none;
   cursor: pointer;
 }
@@ -105,35 +90,23 @@
   color: #fff;
   font-size: 20px;
   font-weight: 600;
+  line-height: 1.4;
 }
-@media (max-width: 1000px) {
-  .form {
-    width: 460px;
-  }
-  .form input {
-    width: 430px;
-  }
-  .orderBtn {
-    width: 430px;
-  }
-}
+
 @media (max-width: 360px) {
-  .form {
-    width: 320px;
-  }
-  .form input {
-    width: 320px;
-  }
+  .form input,
   .orderBtn {
-    width: 320px;
+    font-size: 18px;
   }
+
   .modalWindow {
-    width: 320px;
-    height: 315px;
+    padding: 20px 16px;
   }
+
   .modalTitle {
     font-size: 28px;
   }
+
   .modalText {
     font-size: 18px;
   }

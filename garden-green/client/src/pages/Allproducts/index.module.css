@@ -39,18 +39,22 @@
 .discountedInput {
   display: flex;
   gap: 16px;
-  align-items: center;
+  align-items: flex-end;
+  min-height: 36px;
 }
 
 .span {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  gap: 16px;
+  min-height: 36px;
 }
 
 .priceInputText {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 16px;
+  min-height: 36px;
 }
 
 .priceText,
@@ -59,10 +63,12 @@ label {
   font-size: 20px;
   color: #282828;
   font-weight: 600;
+  line-height: 1;
 }
 
 .priceInputText input {
   width: 112px;
+  height: 36px;
   padding: 8px 16px;
   border-radius: 6px;
   border: 1px solid #ddd;
@@ -95,16 +101,19 @@ label {
   background-image: url("../../assets/images/downIcon.svg");
   background-repeat: no-repeat;
   background-position: right 10px center;
-  width: 200px;
-  padding: 8px 38px 8px 16px;
+  width: 190px;
+  height: 36px;
+  padding: 8px 38px 8px 12px;
   border-radius: 6px;
   border: 1px solid #ddd;
   outline: none;
   font-size: 16px;
   color: #282828;
   font-weight: 500;
-  margin-left: 16px;
+  background-color: #fff;
   box-sizing: border-box;
+  margin-left: 0;
+  max-width: 100%;
 }
 
 .productsDiv {
@@ -367,29 +376,35 @@ label {
 
   .priceInputText {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    width: 100%;
+    grid-template-columns: 56px 112px 112px;
+    align-items: center;
+    gap: 6px;
+    width: auto;
   }
 
   .priceInputText input {
-    width: 100%;
+    width: 112px;
+    min-width: 112px;
+    max-width: 112px;
   }
 
   .discountedInput {
-    width: 100%;
-    justify-content: space-between;
+    width: auto;
+    justify-content: flex-start;
+    gap: 12px;
   }
 
   .span {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: auto;
   }
 
   .priceSort {
-    width: 100%;
+    width: 190px;
+    min-width: 190px;
+    max-width: 190px;
     margin-left: 0;
   }
 
@@ -445,11 +460,37 @@ label {
   }
 
   .priceInputText {
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 50px 96px 96px;
+    align-items: center;
+    gap: 3px;
+    width: auto;
+  }
+
+  .priceInputText input {
+    width: 96px;
+    min-width: 96px;
+    max-width: 96px;
+    padding: 8px 10px;
   }
 
   .discountedInput {
     gap: 10px;
+    width: auto;
+    justify-content: flex-start;
+  }
+
+  .span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+  }
+
+  .priceSort {
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
   }
 
   .productsDiv {
@@ -491,26 +532,27 @@ label {
     font-size: 18px;
   }
 }
-/* 🔥 FINAL FIX — убираем остаточный overflow */
+@media (min-width: 769px) {
+  .allInputs {
+    align-items: center;
+  }
 
-.productImg,
-.productTitlePrice {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
+  .priceInputText,
+  .discountedInput,
+  .span {
+    align-items: center;
+    min-height: 36px;
+  }
 
-/* чтобы ничего не вылазило из карточки */
-.productCard {
-  overflow: hidden;
-}
+  .priceText,
+  .discountPar,
+  label {
+    line-height: 1;
+  }
 
-/* форма не ломает экран */
-.allInputs > * {
-  max-width: 100%;
-}
-
-/* select не выталкивает */
-.priceSort {
-  max-width: 100%;
+  .priceInputText input,
+  .checkbox,
+  .priceSort {
+    height: 36px;
+  }
 }

@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./index.module.css";
 import { useEffect, useState } from "react";
 import MainPageBtn from "../../components/MainButton/index.jsx";
-import downIcon from "../../assets/images/downIcon.svg";
-import upIcon from "../../assets/images/upIcon.png";
+
 import { addToCart } from "../../storage/slices/productSlice";
 import { calculateDiscountPercent } from "../../utils/utils";
 import { sortProducts } from "../../utils/sortProducts";
@@ -131,7 +130,7 @@ function CategoryProducts() {
             onChange={handleSortingChange}
             onClick={toggleSelect}
             style={{
-              backgroundImage: `url(${isSelectOpen ? upIcon : downIcon})`,
+              backgroundImage: "none",
             }}
           >
             <option value="byDefault">by default</option>

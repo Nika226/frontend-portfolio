@@ -53,6 +53,38 @@ To demonstrate:
 
 ---
 
+###2️⃣ 🌿 Garden Green – E-Commerce Projekt
+
+**🇩🇪 Beschreibung:**  
+Ein responsives E-Commerce-Projekt, entwickelt mit React.  
+Der Fokus liegt auf sauberer UI, Filterlogik und einer benutzerfreundlichen Struktur.
+
+**Funktionen:**
+
+- Produktfilter (Preis, Rabatt, Sortierung)
+- Kategorieseiten
+- Warenkorb mit Bestellübersicht
+- Responsives Design (Desktop, Tablet, Mobile)
+
+👉 **Live Demo:** [Projekt ansehen](https://frontend-portfolio-fy3n.vercel.app)
+
+---
+
+**🇬🇧 Description:**  
+A responsive e-commerce project built with React.  
+Focused on clean UI, filtering logic, and user-friendly structure.
+
+**Features:**
+
+- Product filtering (price, discount, sorting)
+- Category pages
+- Shopping cart with order summary
+- Fully responsive layout (desktop, tablet, mobile)
+
+👉 **Live Demo:** [View Project](https://frontend-portfolio-fy3n.vercel.app)
+
+---
+
 ## 📌 Author
 
 Veronika T.  

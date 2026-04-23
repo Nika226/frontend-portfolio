@@ -1,21 +1,27 @@
 .saleComponent {
-  padding: 20px;
+  padding: 32px 20px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .titleBtnDiv {
   display: flex;
   align-items: center;
+  gap: 16px;
 }
 
 .componentTitle {
   color: #282828;
   font-size: 64px;
   font-weight: 700;
+  line-height: 1.1;
 }
 
 .componentBar {
-  margin-left: 32px;
-  width: 100%;
+  flex: 1;
+  min-width: 120px;
   height: 1px;
   background: #ddd;
 }
@@ -28,16 +34,17 @@
   font-size: 16px;
   white-space: nowrap;
   cursor: pointer;
+  background: #fff;
 }
 
 .updateBtn {
-  margin: 40px 0;
-  padding: 8px 16px;
+  margin: 32px 0;
+  padding: 10px 18px;
   border-radius: 6px;
   background: #393;
   border: none;
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -47,54 +54,63 @@
   font-weight: 600;
 }
 
-/* 🔥 ГЛАВНОЕ */
 .saleDiv {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 32px;
-  justify-items: center;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  justify-items: stretch;
+  align-items: stretch;
 }
 
-/* ❗ БОЛЬШЕ НЕТ фиксированных width */
 .product {
+  width: 100%;
+  min-width: 0;
   border-radius: 12px;
   border: 1px solid #ddd;
-  width: 100%;
-  max-width: 316px;
+  background: #fff;
+  overflow: hidden;
   cursor: pointer;
   position: relative;
-  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .product:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
 }
 
 .saleImg {
   width: 100%;
   height: 284px;
   object-fit: cover;
-  border-radius: 12px 12px 0 0;
+  display: block;
 }
 
-/* кнопка */
 .addToCartBtn {
-  display: none;
-  position: absolute;
-  left: 16px;
-  bottom: 140px;
   width: calc(100% - 32px);
+  margin: 12px 16px 0;
   padding: 12px;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #393;
   border: none;
   color: #fff;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
 }
 
-.product:hover .addToCartBtn {
-  display: block;
+.addedToCart {
+  width: calc(100% - 32px);
+  margin: 12px 16px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #282828;
+  background: #fff;
+  color: #282828;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .percentDiv {
@@ -104,12 +120,14 @@
   padding: 4px 8px;
   border-radius: 6px;
   background: #393;
+  z-index: 2;
 }
 
 .percentDiv p {
   color: #fff;
   font-size: 16px;
   font-weight: 600;
+  margin: 0;
 }
 
 .productName {
@@ -117,48 +135,58 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 18px;
-  padding: 5px 10px;
+  padding: 14px 16px 0;
+  margin: 0;
+  color: #282828;
 }
 
 .price {
   display: flex;
   gap: 12px;
-  margin-left: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin: 12px 16px 16px;
 }
 
 .dscPrice {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
+  margin: 0;
+  color: #282828;
 }
 
 .originalPrice {
   color: #8b8b8b;
   font-size: 16px;
   text-decoration: line-through;
+  margin: 0;
 }
 
-/* ===== 1000 ===== */
 @media (max-width: 1000px) {
   .saleDiv {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
   }
 }
 
-/* ===== 768 ===== */
 @media (max-width: 768px) {
   .componentTitle {
     font-size: 48px;
   }
 
   .saleDiv {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .saleImg {
+    height: 240px;
   }
 }
 
-/* ===== 480 ===== */
 @media (max-width: 480px) {
   .saleComponent {
-    padding: 20px 12px;
+    padding: 24px 16px;
   }
 
   .componentTitle {
@@ -171,7 +199,8 @@
   }
 
   .product {
-    max-width: 300px;
+    max-width: 316px;
+    margin: 0 auto;
   }
 
   .saleImg {
@@ -179,9 +208,8 @@
   }
 }
 
-/* ===== 360 ===== */
 @media (max-width: 360px) {
   .product {
-    max-width: 260px;
+    max-width: 300px;
   }
 }
