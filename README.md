@@ -53,7 +53,7 @@ To demonstrate:
 
 ---
 
-###2️⃣ 🌿 Garden Green – E-Commerce Projekt
+2️⃣ 🌿 Garden Green – E-Commerce Projekt
 
 **🇩🇪 Beschreibung:**  
 Ein responsives E-Commerce-Projekt, entwickelt mit React.  
