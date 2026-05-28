@@ -3,6 +3,7 @@ import OrdersTable from "../../components/OrdersTable/OrdersTable";
 
 function Orders({ orders, setOrders, clients }) {
   const [searchValue, setSearchValue] = useState("");
+  const [sortOption, setSortOption] = useState("newest");
   const [statusFilter, setStatusFilter] = useState("All");
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingOrderId, setEditingOrderId] = useState(null);
@@ -14,19 +15,45 @@ function Orders({ orders, setOrders, clients }) {
     date: "",
   });
 
-  const filteredOrders = orders.filter((order) => {
-    const searchText = searchValue.toLowerCase();
+  const filteredOrders = [...orders]
+    .filter((order) => {
+      const searchText = searchValue.toLowerCase();
 
-    const matchesSearch =
-      order.id.toLowerCase().includes(searchText) ||
-      order.client.toLowerCase().includes(searchText) ||
-      order.service.toLowerCase().includes(searchText);
+      return (
+        order.client.toLowerCase().includes(searchText) ||
+        order.service.toLowerCase().includes(searchText) ||
+        order.status.toLowerCase().includes(searchText)
+      );
+    })
+    .sort((a, b) => {
+      if (sortOption === "newest") {
+        return (
+          Number(b.id.replace("ORD-", "")) - Number(a.id.replace("ORD-", ""))
+        );
+      }
 
-    const matchesStatus =
-      statusFilter === "All" || order.status === statusFilter;
+      if (sortOption === "oldest") {
+        return (
+          Number(a.id.replace("ORD-", "")) - Number(b.id.replace("ORD-", ""))
+        );
+      }
 
-    return matchesSearch && matchesStatus;
-  });
+      if (sortOption === "priority") {
+        const priorityOrder = {
+          High: 1,
+          Medium: 2,
+          Low: 3,
+        };
+
+        return priorityOrder[a.priority] - priorityOrder[b.priority];
+      }
+
+      if (sortOption === "status") {
+        return a.status.localeCompare(b.status);
+      }
+
+      return 0;
+    });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -194,6 +221,15 @@ function Orders({ orders, setOrders, clients }) {
           value={searchValue}
           onChange={(event) => setSearchValue(event.target.value)}
         />
+        <select
+          value={sortOption}
+          onChange={(event) => setSortOption(event.target.value)}
+        >
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="priority">Priority</option>
+          <option value="status">Status</option>
+        </select>
 
         <select
           value={statusFilter}

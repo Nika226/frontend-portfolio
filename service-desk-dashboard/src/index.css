@@ -483,3 +483,11 @@ button {
   justify-content: flex-end;
   margin-top: 20px;
 }
+.toolbar select {
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
