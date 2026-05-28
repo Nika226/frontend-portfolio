@@ -53,7 +53,7 @@ To demonstrate:
 
 ---
 
-2️⃣ 🌿 Garden Green – E-Commerce Projekt
+### 2️⃣ 🌿 Garden Green – E-Commerce Projekt
 
 **🇩🇪 Beschreibung:**  
 Ein responsives E-Commerce-Projekt, entwickelt mit React.  
@@ -82,6 +82,64 @@ Focused on clean UI, filtering logic, and user-friendly structure.
 - Fully responsive layout (desktop, tablet, mobile)
 
 👉 **Live Demo:** [View Project](https://frontend-portfolio-fy3n.vercel.app)
+
+---
+
+### 3️⃣ Service Desk Dashboard – B2B CRM System
+
+🚧 **Status:** In Progress
+
+**🇩🇪 Beschreibung:**  
+Ein modernes B2B-Dashboard zur Verwaltung von Serviceaufträgen und Kunden.
+
+Der Fokus liegt auf:
+
+- CRUD-Operationen
+- Datenverwaltung
+- responsivem Dashboard-Layout
+- strukturierter UI
+- moderner React-Architektur
+
+**Funktionen:**
+
+- Dashboard-Übersicht
+- Auftragsverwaltung
+- Kundenverwaltung
+- Suche & Filter
+- Dynamische Statistiken
+- LocalStorage-Speicherung
+- Responsive Design
+
+👉 **Live Demo:**  
+[Projekt ansehen](https://service-desk-dashboard.vercel.app/)
+
+---
+
+**🇬🇧 Description:**  
+A modern B2B dashboard application focused on service order and client management.
+
+The project focuses on:
+
+- CRUD operations
+- data management
+- responsive dashboard layout
+- structured UI
+- modern React architecture
+
+**Features:**
+
+- Dashboard overview
+- Orders management
+- Clients management
+- Search & filtering
+- Dynamic statistics
+- LocalStorage persistence
+- Responsive design
+
+👉 **Live Demo:**  
+[View Project](https://service-desk-dashboard.vercel.app/)
+
+---
 
 ---
 
