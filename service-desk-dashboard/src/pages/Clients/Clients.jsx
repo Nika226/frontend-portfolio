@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Clients({ orders, clients, setClients }) {
   const [searchValue, setSearchValue] = useState("");
@@ -184,7 +185,11 @@ function Clients({ orders, clients, setClients }) {
                 filteredClients.map((client) => (
                   <tr key={client.id}>
                     <td>{client.id}</td>
-                    <td>{client.company}</td>
+                    <td>
+                      <Link className="tableLink" to={`/clients/${client.id}`}>
+                        {client.company}
+                      </Link>
+                    </td>
                     <td>{client.contact}</td>
                     <td>{client.email}</td>
                     <td>{client.city}</td>
