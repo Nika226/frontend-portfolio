@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function OrdersTable({ orders, onDeleteOrder, onEditOrder, onStatusChange }) {
   return (
     <section className="tableSection">
@@ -28,7 +29,11 @@ function OrdersTable({ orders, onDeleteOrder, onEditOrder, onStatusChange }) {
             {orders.length > 0 ? (
               orders.map((order) => (
                 <tr key={order.id}>
-                  <td>{order.id}</td>
+                  <td>
+                    <Link className="tableLink" to={`/orders/${order.id}`}>
+                      {order.id}
+                    </Link>
+                  </td>
                   <td>{order.client}</td>
                   <td>{order.service}</td>
                   <td>

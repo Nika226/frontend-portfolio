@@ -43,7 +43,7 @@ button {
   gap: 12px;
 }
 
-.sidebarNav button {
+.sidebarNav a {
   border: none;
   background: transparent;
   text-align: left;
@@ -55,8 +55,8 @@ button {
   transition: 0.2s;
 }
 
-.sidebarNav button:hover,
-.sidebarNav .activeNav {
+.sidebarNav a:hover,
+.sidebarNav a.active {
   background: #1f2937;
   color: #fff;
 }
@@ -220,6 +220,7 @@ button {
   text-align: left;
   border-bottom: 1px solid #e5e7eb;
   font-size: 15px;
+  vertical-align: middle;
 }
 
 .ordersTable th {
@@ -490,4 +491,78 @@ button {
   font-size: 14px;
   background: white;
   cursor: pointer;
+}
+
+.tableLink:hover {
+  text-decoration: underline;
+}
+
+.backLink {
+  display: inline-flex;
+  margin-bottom: 24px;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.detailsCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.detailsCard h1 {
+  margin-top: 6px;
+  font-size: 34px;
+  color: #111827;
+}
+
+.detailsCard p {
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.detailsGrid div {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px;
+  background: #f9fafb;
+}
+
+.detailsGrid span {
+  display: block;
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.detailsGrid strong {
+  color: #111827;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.ordersTable td {
+  vertical-align: middle;
+}
+
+.tableLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  line-height: 1;
+  color: #2563eb;
+  font-weight: 700;
 }
