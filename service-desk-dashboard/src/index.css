@@ -648,3 +648,239 @@ button {
     flex-direction: column;
   }
 }
+.metricBars {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.metricRow {
+  display: grid;
+  grid-template-columns: 120px 1fr 40px;
+  align-items: center;
+  gap: 14px;
+}
+
+.metricRow span {
+  color: #374151;
+  font-weight: 700;
+}
+
+.metricRow strong {
+  color: #111827;
+  text-align: right;
+}
+
+.metricTrack {
+  height: 12px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.metricFill {
+  height: 100%;
+  border-radius: 999px;
+  background: #2563eb;
+}
+
+.topClientsList {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.topClientItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px 18px;
+  background: #f9fafb;
+}
+
+.topClientItem span {
+  color: #111827;
+  font-weight: 700;
+}
+
+.topClientItem strong {
+  color: #2563eb;
+}
+
+@media (max-width: 600px) {
+  .metricRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .metricRow strong {
+    text-align: left;
+  }
+
+  .topClientItem {
+    flex-direction: column;
+  }
+}
+.topClientLink {
+  transition: 0.2s;
+}
+
+.topClientLink:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+.activityPanel {
+  margin-top: 32px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.activityPanel h2 {
+  font-size: 24px;
+  color: #111827;
+  margin-top: 4px;
+}
+
+.activityList {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.activityItem {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: #f9fafb;
+  transition: 0.2s;
+}
+
+.activityItem:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.activityDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #2563eb;
+}
+
+.activityItem strong {
+  display: block;
+  color: #111827;
+  font-size: 15px;
+}
+
+.activityItem span {
+  display: block;
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.activityItem time {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .activityItem {
+    grid-template-columns: 18px 1fr;
+  }
+
+  .activityItem time {
+    grid-column: 2;
+  }
+}
+.notesPanel {
+  margin-top: 32px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.notesPanel h2 {
+  font-size: 24px;
+  color: #111827;
+  margin-top: 4px;
+}
+
+.noteForm {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.noteForm textarea {
+  min-height: 110px;
+  resize: vertical;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #111827;
+}
+
+.noteForm button {
+  justify-self: flex-start;
+}
+
+.notesList {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.noteItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px;
+  background: #f9fafb;
+}
+
+.noteItem p {
+  color: #111827;
+  font-weight: 600;
+}
+
+.noteItem span {
+  display: block;
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.emptyNotes {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .noteItem {
+    flex-direction: column;
+  }
+
+  .noteForm button {
+    width: 100%;
+  }
+}

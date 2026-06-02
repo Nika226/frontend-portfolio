@@ -78,7 +78,10 @@ function App() {
           element={<OrderDetails orders={orders} />}
         />
 
-        <Route path="/analytics" element={<Analytics orders={orders} />} />
+        <Route
+          path="/analytics"
+          element={<Analytics orders={orders} clients={clients} />}
+        />
       </Routes>
     </div>
   );

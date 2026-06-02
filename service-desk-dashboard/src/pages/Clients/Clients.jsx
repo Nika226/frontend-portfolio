@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import EditClientModal from "../../components/EditClientModal/EditClientModal";
 
 function Clients({ orders, clients, setClients }) {
   const [searchValue, setSearchValue] = useState("");
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [editingClient, setEditingClient] = useState(null);
 
   const [newClient, setNewClient] = useState({
     company: "",
@@ -79,6 +81,45 @@ function Clients({ orders, clients, setClients }) {
     });
 
     setIsFormOpen(false);
+  };
+
+  const handleEditClient = (client) => {
+    setEditingClient(client);
+  };
+
+  const handleEditClientChange = (event) => {
+    const { name, value } = event.target;
+
+    setEditingClient((prevClient) => ({
+      ...prevClient,
+      [name]: value,
+    }));
+  };
+
+  const handleSaveEditedClient = (event) => {
+    event.preventDefault();
+
+    setClients((prevClients) =>
+      prevClients.map((client) =>
+        client.id === editingClient.id ? editingClient : client,
+      ),
+    );
+
+    setEditingClient(null);
+  };
+
+  const handleDeleteClient = (clientId) => {
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this client?",
+    );
+
+    if (!isConfirmed) {
+      return;
+    }
+
+    setClients((prevClients) =>
+      prevClients.filter((client) => client.id !== clientId),
+    );
   };
 
   return (
@@ -177,6 +218,7 @@ function Clients({ orders, clients, setClients }) {
                 <th>Email</th>
                 <th>City</th>
                 <th>Active orders</th>
+                <th>Action</th>
               </tr>
             </thead>
 
@@ -194,11 +236,28 @@ function Clients({ orders, clients, setClients }) {
                     <td>{client.email}</td>
                     <td>{client.city}</td>
                     <td>{client.activeOrders}</td>
+                    <td>
+                      <div className="tableActions">
+                        <button
+                          className="editOrderBtn"
+                          onClick={() => handleEditClient(client)}
+                        >
+                          Edit
+                        </button>
+
+                        <button
+                          className="deleteOrderBtn"
+                          onClick={() => handleDeleteClient(client.id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan="6" className="emptyTableCell">
+                  <td colSpan="7" className="emptyTableCell">
                     No clients found.
                   </td>
                 </tr>
@@ -207,6 +266,15 @@ function Clients({ orders, clients, setClients }) {
           </table>
         </div>
       </section>
+
+      {editingClient && (
+        <EditClientModal
+          editingClient={editingClient}
+          onClose={() => setEditingClient(null)}
+          onSave={handleSaveEditedClient}
+          onChange={handleEditClientChange}
+        />
+      )}
     </main>
   );
 }
