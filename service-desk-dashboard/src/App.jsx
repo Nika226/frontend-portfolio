@@ -23,6 +23,11 @@ function App() {
     return savedClients ? JSON.parse(savedClients) : mockClients;
   });
 
+  const [activityLog, setActivityLog] = useState(() => {
+    const savedActivityLog = localStorage.getItem("serviceDeskActivityLog");
+    return savedActivityLog ? JSON.parse(savedActivityLog) : [];
+  });
+
   useEffect(() => {
     localStorage.setItem("serviceDeskOrders", JSON.stringify(orders));
   }, [orders]);
@@ -31,11 +36,31 @@ function App() {
     localStorage.setItem("serviceDeskClients", JSON.stringify(clients));
   }, [clients]);
 
+  useEffect(() => {
+    localStorage.setItem("serviceDeskActivityLog", JSON.stringify(activityLog));
+  }, [activityLog]);
+
   const handleResetDemoData = () => {
     setOrders(mockOrders);
     setClients(mockClients);
     localStorage.removeItem("serviceDeskOrders");
     localStorage.removeItem("serviceDeskClients");
+  };
+
+  const addActivity = (type, message, link = "") => {
+    const activityToAdd = {
+      id: Date.now(),
+      type,
+      message,
+      link,
+      date: new Date().toLocaleDateString("en-GB"),
+      time: new Date().toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    };
+
+    setActivityLog((prevLog) => [activityToAdd, ...prevLog].slice(0, 20));
   };
 
   return (
@@ -48,14 +73,23 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <Dashboard orders={orders} onResetDemoData={handleResetDemoData} />
+            <Dashboard
+              orders={orders}
+              activityLog={activityLog}
+              onResetDemoData={handleResetDemoData}
+            />
           }
         />
 
         <Route
           path="/orders"
           element={
-            <Orders orders={orders} setOrders={setOrders} clients={clients} />
+            <Orders
+              orders={orders}
+              setOrders={setOrders}
+              clients={clients}
+              addActivity={addActivity}
+            />
           }
         />
 
@@ -66,6 +100,7 @@ function App() {
               orders={orders}
               clients={clients}
               setClients={setClients}
+              addActivity={addActivity}
             />
           }
         />

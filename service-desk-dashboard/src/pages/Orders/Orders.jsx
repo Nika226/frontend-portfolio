@@ -2,12 +2,13 @@ import { useState } from "react";
 import OrdersTable from "../../components/OrdersTable/OrdersTable";
 import EditOrderModal from "../../components/EditOrderModal/EditOrderModal";
 
-function Orders({ orders, setOrders, clients }) {
+function Orders({ orders, setOrders, clients, addActivity }) {
   const [searchValue, setSearchValue] = useState("");
   const [sortOption, setSortOption] = useState("newest");
   const [statusFilter, setStatusFilter] = useState("All");
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingOrder, setEditingOrder] = useState(null);
+
   const [newOrder, setNewOrder] = useState({
     client: "",
     service: "",
@@ -16,20 +17,61 @@ function Orders({ orders, setOrders, clients }) {
     date: "",
   });
 
-  const filteredOrders = [...orders].filter((order) => {
-    const searchText = searchValue.toLowerCase();
+  const filteredOrders = [...orders]
+    .filter((order) => {
+      const searchText = searchValue.toLowerCase();
 
-    const matchesSearch =
-      order.id.toLowerCase().includes(searchText) ||
-      order.client.toLowerCase().includes(searchText) ||
-      order.service.toLowerCase().includes(searchText) ||
-      order.status.toLowerCase().includes(searchText);
+      const matchesSearch =
+        order.id.toLowerCase().includes(searchText) ||
+        order.client.toLowerCase().includes(searchText) ||
+        order.service.toLowerCase().includes(searchText) ||
+        order.status.toLowerCase().includes(searchText);
 
-    const matchesStatus =
-      statusFilter === "All" || order.status === statusFilter;
+      const matchesStatus =
+        statusFilter === "All" || order.status === statusFilter;
 
-    return matchesSearch && matchesStatus;
-  });
+      return matchesSearch && matchesStatus;
+    })
+    .sort((a, b) => {
+      if (sortOption === "newest") {
+        return (
+          Number(b.id.replace("ORD-", "")) - Number(a.id.replace("ORD-", ""))
+        );
+      }
+
+      if (sortOption === "oldest") {
+        return (
+          Number(a.id.replace("ORD-", "")) - Number(b.id.replace("ORD-", ""))
+        );
+      }
+
+      if (sortOption === "priority") {
+        const priorityOrder = {
+          High: 1,
+          Medium: 2,
+          Low: 3,
+        };
+
+        return priorityOrder[a.priority] - priorityOrder[b.priority];
+      }
+
+      if (sortOption === "status") {
+        return a.status.localeCompare(b.status);
+      }
+
+      return 0;
+    });
+
+  const getNextOrderId = () => {
+    const orderNumbers = orders.map((order) =>
+      Number(order.id.replace("ORD-", "")),
+    );
+
+    const maxOrderNumber = Math.max(...orderNumbers, 1000);
+
+    return `ORD-${maxOrderNumber + 1}`;
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -54,22 +96,19 @@ function Orders({ orders, setOrders, clients }) {
   const handleSubmitOrder = (event) => {
     event.preventDefault();
 
-    const getNextOrderId = () => {
-      const orderNumbers = orders.map((order) =>
-        Number(order.id.replace("ORD-", "")),
-      );
-
-      const maxOrderNumber = Math.max(...orderNumbers, 1000);
-
-      return `ORD-${maxOrderNumber + 1}`;
-    };
-
     const orderToAdd = {
       id: getNextOrderId(),
       ...newOrder,
     };
 
     setOrders((prevOrders) => [orderToAdd, ...prevOrders]);
+
+    addActivity(
+      "order-created",
+      `Order ${orderToAdd.id} created`,
+      `/orders/${orderToAdd.id}`,
+    );
+
     resetForm();
   };
 
@@ -95,6 +134,12 @@ function Orders({ orders, setOrders, clients }) {
       ),
     );
 
+    addActivity(
+      "order-edited",
+      `Order ${editingOrder.id} edited`,
+      `/orders/${editingOrder.id}`,
+    );
+
     setEditingOrder(null);
   };
 
@@ -102,6 +147,8 @@ function Orders({ orders, setOrders, clients }) {
     setOrders((prevOrders) =>
       prevOrders.filter((order) => order.id !== orderId),
     );
+
+    addActivity("order-deleted", `Order ${orderId} deleted`);
   };
 
   const handleStatusChange = (orderId, newStatus) => {
@@ -109,6 +156,12 @@ function Orders({ orders, setOrders, clients }) {
       prevOrders.map((order) =>
         order.id === orderId ? { ...order, status: newStatus } : order,
       ),
+    );
+
+    addActivity(
+      "status-changed",
+      `Order ${orderId} status changed to ${newStatus}`,
+      `/orders/${orderId}`,
     );
   };
 
@@ -197,6 +250,7 @@ function Orders({ orders, setOrders, clients }) {
           value={searchValue}
           onChange={(event) => setSearchValue(event.target.value)}
         />
+
         <select
           value={sortOption}
           onChange={(event) => setSortOption(event.target.value)}
@@ -224,6 +278,7 @@ function Orders({ orders, setOrders, clients }) {
         onEditOrder={handleEditOrder}
         onStatusChange={handleStatusChange}
       />
+
       {editingOrder && (
         <EditOrderModal
           editingOrder={editingOrder}

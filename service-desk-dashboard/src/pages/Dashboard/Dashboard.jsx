@@ -3,7 +3,7 @@ import DashboardCard from "../../components/DashboardCard/DashboardCard";
 import OrdersTable from "../../components/OrdersTable/OrdersTable";
 import ActivityTimeline from "../../components/ActivityTimeline/ActivityTimeline";
 
-function Dashboard({ orders, onResetDemoData }) {
+function Dashboard({ orders, activityLog, onResetDemoData }) {
   const openOrders = orders.filter((order) => order.status === "Open").length;
   const inProgressOrders = orders.filter(
     (order) => order.status === "In Progress",
@@ -22,7 +22,7 @@ function Dashboard({ orders, onResetDemoData }) {
         <DashboardCard title="In Progress" value={inProgressOrders} />
         <DashboardCard title="Completed" value={completedOrders} />
       </section>
-      <ActivityTimeline orders={orders} />
+      <ActivityTimeline activities={activityLog} />
       <section className="demoActions">
         <button className="secondaryBtn" onClick={onResetDemoData}>
           Reset demo data
