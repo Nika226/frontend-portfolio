@@ -1,5 +1,49 @@
 import { Link } from "react-router-dom";
 function OrdersTable({ orders, onDeleteOrder, onEditOrder, onStatusChange }) {
+  const getDueStatus = (order) => {
+    if (order.status === "Completed") {
+      return {
+        label: "Completed",
+        className: "completed",
+      };
+    }
+
+    if (!order.dueDate) {
+      return {
+        label: "No due date",
+        className: "neutral",
+      };
+    }
+
+    const today = new Date();
+    const dueDate = new Date(order.dueDate);
+
+    today.setHours(0, 0, 0, 0);
+    dueDate.setHours(0, 0, 0, 0);
+
+    const diffTime = dueDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays < 0) {
+      return {
+        label: "Overdue",
+        className: "overdue",
+      };
+    }
+
+    if (diffDays <= 3) {
+      return {
+        label: "Due soon",
+        className: "duesoon",
+      };
+    }
+
+    return {
+      label: "On track",
+      className: "ontrack",
+    };
+  };
+
   return (
     <section className="tableSection">
       <div className="sectionHeader">
@@ -21,6 +65,8 @@ function OrdersTable({ orders, onDeleteOrder, onEditOrder, onStatusChange }) {
               <th>Status</th>
               <th>Priority</th>
               <th>Date</th>
+              <th>Due Date</th>
+              <th>Health</th>
               {(onDeleteOrder || onEditOrder) && <th>Action</th>}
             </tr>
           </thead>
@@ -69,6 +115,18 @@ function OrdersTable({ orders, onDeleteOrder, onEditOrder, onStatusChange }) {
                     </span>
                   </td>
                   <td>{order.date}</td>
+                  <td>{order.dueDate || "—"}</td>
+                  <td>
+                    {(() => {
+                      const dueStatus = getDueStatus(order);
+
+                      return (
+                        <span className={`dueBadge ${dueStatus.className}`}>
+                          {dueStatus.label}
+                        </span>
+                      );
+                    })()}
+                  </td>
 
                   {(onDeleteOrder || onEditOrder) && (
                     <td>
@@ -98,7 +156,7 @@ function OrdersTable({ orders, onDeleteOrder, onEditOrder, onStatusChange }) {
             ) : (
               <tr>
                 <td
-                  colSpan={onDeleteOrder || onEditOrder ? "7" : "6"}
+                  colSpan={onDeleteOrder || onEditOrder ? "9" : "8"}
                   className="emptyTableCell"
                 >
                   No orders found.

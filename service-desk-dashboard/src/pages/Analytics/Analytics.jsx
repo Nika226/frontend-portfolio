@@ -23,6 +23,35 @@ function Analytics({ orders, clients }) {
   const completionRate =
     orders.length > 0 ? Math.round((completedOrders / orders.length) * 100) : 0;
 
+  const getOrderHealth = (order) => {
+    if (order.status === "Completed") {
+      return "Completed";
+    }
+
+    if (!order.dueDate) {
+      return "No due date";
+    }
+
+    const today = new Date();
+    const dueDate = new Date(order.dueDate);
+
+    today.setHours(0, 0, 0, 0);
+    dueDate.setHours(0, 0, 0, 0);
+
+    const diffTime = dueDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays < 0) {
+      return "Overdue";
+    }
+
+    if (diffDays <= 3) {
+      return "Due Soon";
+    }
+
+    return "On Track";
+  };
+
   const clientOrderCounts = orders.reduce((acc, order) => {
     acc[order.client] = (acc[order.client] || 0) + 1;
     return acc;
@@ -40,6 +69,43 @@ function Analytics({ orders, clients }) {
     })
     .sort((a, b) => b.count - a.count)
     .slice(0, 3);
+
+  const clientHealth = clients.map((client) => {
+    const clientOrders = orders.filter(
+      (order) => order.client === client.company,
+    );
+
+    const overdueOrders = clientOrders.filter(
+      (order) => getOrderHealth(order) === "Overdue",
+    ).length;
+
+    const dueSoonOrders = clientOrders.filter(
+      (order) => getOrderHealth(order) === "Due Soon",
+    ).length;
+
+    const activeOrders = clientOrders.filter(
+      (order) => order.status !== "Completed",
+    ).length;
+
+    let healthStatus = "Excellent";
+
+    if (overdueOrders >= 2) {
+      healthStatus = "Critical";
+    } else if (overdueOrders === 1) {
+      healthStatus = "Attention Needed";
+    } else if (dueSoonOrders >= 1 || activeOrders >= 3) {
+      healthStatus = "Good";
+    }
+
+    return {
+      id: client.id,
+      company: client.company,
+      healthStatus,
+      activeOrders,
+      overdueOrders,
+      dueSoonOrders,
+    };
+  });
 
   return (
     <main className="mainContent">
@@ -135,19 +201,43 @@ function Analytics({ orders, clients }) {
           <h2>Orders by priority</h2>
         </div>
 
-        <div className="analyticsList">
-          <div>
+        <div className="metricBars">
+          <div className="metricRow">
             <span>High</span>
+            <div className="metricTrack">
+              <div
+                className="metricFill"
+                style={{
+                  width: `${orders.length ? (highPriorityOrders / orders.length) * 100 : 0}%`,
+                }}
+              />
+            </div>
             <strong>{highPriorityOrders}</strong>
           </div>
 
-          <div>
+          <div className="metricRow">
             <span>Medium</span>
+            <div className="metricTrack">
+              <div
+                className="metricFill"
+                style={{
+                  width: `${orders.length ? (mediumPriorityOrders / orders.length) * 100 : 0}%`,
+                }}
+              />
+            </div>
             <strong>{mediumPriorityOrders}</strong>
           </div>
 
-          <div>
+          <div className="metricRow">
             <span>Low</span>
+            <div className="metricTrack">
+              <div
+                className="metricFill"
+                style={{
+                  width: `${orders.length ? (lowPriorityOrders / orders.length) * 100 : 0}%`,
+                }}
+              />
+            </div>
             <strong>{lowPriorityOrders}</strong>
           </div>
         </div>
@@ -181,6 +271,33 @@ function Analytics({ orders, clients }) {
           ) : (
             <p>No client activity yet.</p>
           )}
+        </div>
+      </section>
+
+      <section className="analyticsPanel">
+        <div>
+          <p className="eyebrow">Client health</p>
+          <h2>Client risk overview</h2>
+        </div>
+
+        <div className="topClientsList">
+          {clientHealth.map((client) => (
+            <Link
+              key={client.id}
+              className="topClientItem topClientLink"
+              to={`/clients/${client.id}`}
+            >
+              <span>{client.company}</span>
+
+              <strong
+                className={`clientHealthBadge ${client.healthStatus
+                  .replace(/\s+/g, "")
+                  .toLowerCase()}`}
+              >
+                {client.healthStatus}
+              </strong>
+            </Link>
+          ))}
         </div>
       </section>
     </main>

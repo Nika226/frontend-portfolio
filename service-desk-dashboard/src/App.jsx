@@ -11,6 +11,7 @@ import { mockOrders } from "./data/mockOrders";
 import { mockClients } from "./data/mockClients";
 import OrderDetails from "./pages/OrderDetails/OrderDetails";
 import ClientDetails from "./pages/ClientDetails/ClientDetails";
+import Activity from "./pages/Activity/Activity";
 
 function App() {
   const [orders, setOrders] = useState(() => {
@@ -116,6 +117,10 @@ function App() {
         <Route
           path="/analytics"
           element={<Analytics orders={orders} clients={clients} />}
+        />
+        <Route
+          path="/activity"
+          element={<Activity activityLog={activityLog} />}
         />
       </Routes>
     </div>

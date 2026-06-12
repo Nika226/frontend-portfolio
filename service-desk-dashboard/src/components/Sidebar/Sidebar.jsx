@@ -10,6 +10,7 @@ function Sidebar() {
         <NavLink to="/orders">Orders</NavLink>
         <NavLink to="/clients">Clients</NavLink>
         <NavLink to="/analytics">Analytics</NavLink>
+        <NavLink to="/activity">Activity</NavLink>
       </nav>
     </aside>
   );

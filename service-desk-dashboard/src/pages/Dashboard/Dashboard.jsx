@@ -2,6 +2,7 @@ import Header from "../../components/Header/Header";
 import DashboardCard from "../../components/DashboardCard/DashboardCard";
 import OrdersTable from "../../components/OrdersTable/OrdersTable";
 import ActivityTimeline from "../../components/ActivityTimeline/ActivityTimeline";
+import DashboardNotifications from "../../components/DashboardNotifications/DashboardNotifications";
 
 function Dashboard({ orders, activityLog, onResetDemoData }) {
   const openOrders = orders.filter((order) => order.status === "Open").length;
@@ -22,6 +23,7 @@ function Dashboard({ orders, activityLog, onResetDemoData }) {
         <DashboardCard title="In Progress" value={inProgressOrders} />
         <DashboardCard title="Completed" value={completedOrders} />
       </section>
+      <DashboardNotifications activities={activityLog} />
       <ActivityTimeline activities={activityLog} />
       <section className="demoActions">
         <button className="secondaryBtn" onClick={onResetDemoData}>

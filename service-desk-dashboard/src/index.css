@@ -884,3 +884,180 @@ button {
     width: 100%;
   }
 }
+.dueBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dueBadge.ontrack {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.dueBadge.duesoon {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.dueBadge.overdue {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.dueBadge.completed {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.dueBadge.neutral {
+  background: #f3f4f6;
+  color: #374151;
+}
+.notificationsPanel {
+  margin-top: 32px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.notificationsPanel h2 {
+  font-size: 24px;
+  color: #111827;
+  margin-top: 4px;
+}
+
+.notificationsList {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.notificationItem {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: #f9fafb;
+  transition: 0.2s;
+}
+
+.notificationItem:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.notificationItem span {
+  font-size: 20px;
+}
+
+.notificationItem strong {
+  color: #111827;
+  font-size: 15px;
+}
+
+.notificationItem p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 4px;
+}
+.activityPagePanel {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.activityPagePanel h2 {
+  font-size: 24px;
+  color: #111827;
+  margin-top: 4px;
+}
+
+.activityPageList {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.activityPageItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px 18px;
+  background: #f9fafb;
+  transition: 0.2s;
+}
+
+.activityPageItem:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.activityPageItem strong {
+  display: block;
+  color: #111827;
+  font-size: 16px;
+}
+
+.activityPageItem span {
+  display: block;
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.activityPageItem time {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .activityPageItem {
+    flex-direction: column;
+  }
+}
+.clientHealthBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.clientHealthBadge.excellent {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.clientHealthBadge.good {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.clientHealthBadge.attentionneeded {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.clientHealthBadge.critical {
+  background: #fee2e2;
+  color: #991b1b;
+}

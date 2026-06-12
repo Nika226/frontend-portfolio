@@ -14,7 +14,7 @@ function Orders({ orders, setOrders, clients, addActivity }) {
     service: "",
     status: "Open",
     priority: "Medium",
-    date: "",
+    dueDate: "",
   });
 
   const filteredOrders = [...orders]
@@ -87,7 +87,7 @@ function Orders({ orders, setOrders, clients, addActivity }) {
       service: "",
       status: "Open",
       priority: "Medium",
-      date: "",
+      dueDate: "",
     });
 
     setIsFormOpen(false);
@@ -99,6 +99,7 @@ function Orders({ orders, setOrders, clients, addActivity }) {
     const orderToAdd = {
       id: getNextOrderId(),
       ...newOrder,
+      date: new Date().toISOString().split("T")[0],
     };
 
     setOrders((prevOrders) => [orderToAdd, ...prevOrders]);
@@ -231,8 +232,8 @@ function Orders({ orders, setOrders, clients, addActivity }) {
 
           <input
             type="date"
-            name="date"
-            value={newOrder.date}
+            name="dueDate"
+            value={newOrder.dueDate}
             onChange={handleChange}
             required
           />
