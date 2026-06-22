@@ -1,6 +1,31 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Activity({ activityLog }) {
+  const [activityFilter, setActivityFilter] = useState("All");
+
+  const filteredActivityLog =
+    activityFilter === "All"
+      ? activityLog
+      : activityLog.filter((activity) => activity.type === activityFilter);
+
+  const activityTypes = [
+    "All",
+    ...new Set(activityLog.map((item) => item.type)),
+  ];
+  const activityLabels = {
+    "order-created": "Order Created",
+    "order-edited": "Order Edited",
+    "order-deleted": "Order Deleted",
+    "status-changed": "Status Changed",
+  };
+  const activityIcons = {
+    "order-created": "🟢",
+    "order-edited": "✏️",
+    "order-deleted": "🗑️",
+    "status-changed": "🔄",
+  };
+
   return (
     <main className="mainContent">
       <header className="header">
@@ -14,11 +39,26 @@ function Activity({ activityLog }) {
         <div>
           <p className="eyebrow">System log</p>
           <h2>All activity records</h2>
+          <div className="activityFilters">
+            {activityTypes.map((type) => (
+              <button
+                key={type}
+                className={
+                  activityFilter === type
+                    ? "activityFilter active"
+                    : "activityFilter"
+                }
+                onClick={() => setActivityFilter(type)}
+              >
+                {activityLabels[type] || type}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="activityPageList">
-          {activityLog.length > 0 ? (
-            activityLog.map((activity) =>
+          {filteredActivityLog.length > 0 ? (
+            filteredActivityLog.map((activity) =>
               activity.link ? (
                 <Link
                   key={activity.id}
@@ -26,8 +66,12 @@ function Activity({ activityLog }) {
                   to={activity.link}
                 >
                   <div>
-                    <strong>{activity.message}</strong>
-                    <span>{activity.type}</span>
+                    <strong>
+                      {activityIcons[activity.type]} {activity.message}
+                    </strong>
+                    <span>
+                      {activityLabels[activity.type] || activity.type}
+                    </span>
                   </div>
 
                   <time>
@@ -37,8 +81,12 @@ function Activity({ activityLog }) {
               ) : (
                 <div key={activity.id} className="activityPageItem">
                   <div>
-                    <strong>{activity.message}</strong>
-                    <span>{activity.type}</span>
+                    <strong>
+                      {activityIcons[activity.type]} {activity.message}
+                    </strong>
+                    <span>
+                      {activityLabels[activity.type] || activity.type}
+                    </span>
                   </div>
 
                   <time>

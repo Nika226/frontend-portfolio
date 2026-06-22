@@ -23,6 +23,8 @@ function Analytics({ orders, clients }) {
   const completionRate =
     orders.length > 0 ? Math.round((completedOrders / orders.length) * 100) : 0;
 
+  const getPercent = (value) =>
+    orders.length > 0 ? Math.round((value / orders.length) * 100) : 0;
   const getOrderHealth = (order) => {
     if (order.status === "Completed") {
       return "Completed";
@@ -158,39 +160,45 @@ function Analytics({ orders, clients }) {
             <span>Open</span>
             <div className="metricTrack">
               <div
-                className="metricFill"
+                className="metricFill openFill"
                 style={{
                   width: `${orders.length ? (openOrders / orders.length) * 100 : 0}%`,
                 }}
               />
             </div>
-            <strong>{openOrders}</strong>
+            <strong>
+              {openOrders} ({getPercent(openOrders)}%)
+            </strong>
           </div>
 
           <div className="metricRow">
             <span>In Progress</span>
             <div className="metricTrack">
               <div
-                className="metricFill"
+                className="metricFill progressFill"
                 style={{
                   width: `${orders.length ? (inProgressOrders / orders.length) * 100 : 0}%`,
                 }}
               />
             </div>
-            <strong>{inProgressOrders}</strong>
+            <strong>
+              {inProgressOrders} ({getPercent(inProgressOrders)}%)
+            </strong>
           </div>
 
           <div className="metricRow">
             <span>Completed</span>
             <div className="metricTrack">
               <div
-                className="metricFill"
+                className="metricFill completedFill"
                 style={{
                   width: `${orders.length ? (completedOrders / orders.length) * 100 : 0}%`,
                 }}
               />
             </div>
-            <strong>{completedOrders}</strong>
+            <strong>
+              {completedOrders} ({getPercent(completedOrders)}%)
+            </strong>
           </div>
         </div>
       </section>
@@ -206,39 +214,45 @@ function Analytics({ orders, clients }) {
             <span>High</span>
             <div className="metricTrack">
               <div
-                className="metricFill"
+                className="metricFill highFill"
                 style={{
                   width: `${orders.length ? (highPriorityOrders / orders.length) * 100 : 0}%`,
                 }}
               />
             </div>
-            <strong>{highPriorityOrders}</strong>
+            <strong>
+              {highPriorityOrders} ({getPercent(highPriorityOrders)}%)
+            </strong>
           </div>
 
           <div className="metricRow">
             <span>Medium</span>
             <div className="metricTrack">
               <div
-                className="metricFill"
+                className="metricFill mediumFill"
                 style={{
                   width: `${orders.length ? (mediumPriorityOrders / orders.length) * 100 : 0}%`,
                 }}
               />
             </div>
-            <strong>{mediumPriorityOrders}</strong>
+            <strong>
+              {mediumPriorityOrders} ({getPercent(mediumPriorityOrders)}%)
+            </strong>
           </div>
 
           <div className="metricRow">
             <span>Low</span>
             <div className="metricTrack">
               <div
-                className="metricFill"
+                className="metricFill lowFill"
                 style={{
                   width: `${orders.length ? (lowPriorityOrders / orders.length) * 100 : 0}%`,
                 }}
               />
             </div>
-            <strong>{lowPriorityOrders}</strong>
+            <strong>
+              {lowPriorityOrders} ({getPercent(lowPriorityOrders)}%)
+            </strong>
           </div>
         </div>
       </section>
@@ -284,16 +298,26 @@ function Analytics({ orders, clients }) {
           {clientHealth.map((client) => (
             <Link
               key={client.id}
-              className="topClientItem topClientLink"
+              className="topClientItem topClientLink clientHealthItem"
               to={`/clients/${client.id}`}
             >
-              <span>{client.company}</span>
+              <div>
+                <span>{client.company}</span>
+                <p>
+                  {client.activeOrders} active · {client.overdueOrders} overdue
+                  · {client.dueSoonOrders} due soon
+                </p>
+              </div>
 
               <strong
                 className={`clientHealthBadge ${client.healthStatus
                   .replace(/\s+/g, "")
                   .toLowerCase()}`}
               >
+                {client.healthStatus === "Excellent" && "🟢 "}
+                {client.healthStatus === "Good" && "🔵 "}
+                {client.healthStatus === "Attention Needed" && "🟠 "}
+                {client.healthStatus === "Critical" && "🔴 "}
                 {client.healthStatus}
               </strong>
             </Link>
