@@ -18,7 +18,6 @@ function App() {
     const savedOrders = localStorage.getItem("serviceDeskOrders");
     return savedOrders ? JSON.parse(savedOrders) : mockOrders;
   });
-
   const [clients, setClients] = useState(() => {
     const savedClients = localStorage.getItem("serviceDeskClients");
     return savedClients ? JSON.parse(savedClients) : mockClients;
@@ -28,6 +27,8 @@ function App() {
     const savedActivityLog = localStorage.getItem("serviceDeskActivityLog");
     return savedActivityLog ? JSON.parse(savedActivityLog) : [];
   });
+
+  const [resetMessage, setResetMessage] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("serviceDeskOrders", JSON.stringify(orders));
@@ -42,12 +43,18 @@ function App() {
   }, [activityLog]);
 
   const handleResetDemoData = () => {
-    setOrders(mockOrders);
-    setClients(mockClients);
     localStorage.removeItem("serviceDeskOrders");
     localStorage.removeItem("serviceDeskClients");
-  };
 
+    setOrders(mockOrders);
+    setClients(mockClients);
+
+    setResetMessage(true);
+
+    setTimeout(() => {
+      setResetMessage(false);
+    }, 3000);
+  };
   const addActivity = (type, message, link = "") => {
     const activityToAdd = {
       id: Date.now(),
@@ -78,6 +85,7 @@ function App() {
               orders={orders}
               activityLog={activityLog}
               onResetDemoData={handleResetDemoData}
+              resetMessage={resetMessage}
             />
           }
         />

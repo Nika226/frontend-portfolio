@@ -481,8 +481,10 @@ button {
 }
 .demoActions {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 20px 0;
 }
 .toolbar select {
   border: 1px solid #d1d5db;
@@ -1148,4 +1150,136 @@ button {
 
 .lowFill {
   background: #6b7280;
+}
+.recommendationsPanel {
+  margin-top: 32px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.recommendationsPanel h2 {
+  font-size: 24px;
+  color: #111827;
+  margin-top: 4px;
+}
+
+.recommendationsList {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.recommendationItem {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px 18px;
+  background: #f9fafb;
+  transition: 0.2s;
+}
+
+.recommendationItem:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.recommendationIcon {
+  font-size: 22px;
+}
+
+.recommendationItem strong {
+  color: #111827;
+  font-size: 15px;
+}
+
+.recommendationItem p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.recommendationItem small {
+  color: #374151;
+  font-weight: 800;
+  border-radius: 999px;
+  background: #e5e7eb;
+  padding: 6px 10px;
+}
+
+@media (max-width: 700px) {
+  .recommendationItem {
+    grid-template-columns: 34px 1fr;
+  }
+
+  .recommendationItem small {
+    grid-column: 2;
+    width: fit-content;
+  }
+}
+.recommendationItem small {
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.recommendationItem small.critical {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.recommendationItem small.priority {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.recommendationItem small.upcoming {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.recommendationItem small.stable {
+  background: #dcfce7;
+  color: #15803d;
+}
+.dashboardActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.resetDemoButton {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  background: #eef2ff;
+  color: #1d4ed8;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.resetDemoButton:hover {
+  background: #dbeafe;
+  transform: translateY(-1px);
+}
+
+.resetDemoButton:active {
+  transform: translateY(0);
+}
+.resetSuccessMessage {
+  margin-left: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 14px;
+  font-weight: 600;
 }
